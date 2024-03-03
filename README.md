@@ -1,6 +1,12 @@
-# stockup_app
+# Stockup - Stock Market App
 
-A new Flutter project.
+Stockup is your go-to app for staying ahead in the stock market game. Whether you're a seasoned investor or just starting out, Stockup provides you
+with the tools and insights you need to make informed decisions and maximize your returns.
+
+
+### Attribution
+
+Design by: [MindInventory UI/UX ](https://dribbble.com/shots/23712740-Stockup-Stock-Market-App) on Dribble.
 
 ## Getting Started
 
