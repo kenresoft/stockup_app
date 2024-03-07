@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: const Color(0xff84CEFE), toolbarHeight: 0, scrolledUnderElevation: 0),
-      backgroundColor: Colors.black,
+      backgroundColor: const Color(0xff121212),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -98,20 +98,20 @@ class _HomeState extends State<Home> {
                       Positioned(
                         width: MediaQuery.of(context).size.width + 45,
                         top: 180,
-                        height: 200,
+                        height: 230,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 40),
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               CustomPaint(
-                                size: Size(MediaQuery.of(context).size.width * 0.45, MediaQuery.of(context).size.width * 0.45),
+                                size: Size.fromWidth(MediaQuery.of(context).size.width * 0.48),
                                 painter: const HomeClip1(Color(0xffCECB7D)),
                               ),
                               CustomPaint(
-                                size: Size(MediaQuery.of(context).size.width * 0.45, MediaQuery.of(context).size.width * 0.45),
+                                size: Size.fromWidth(MediaQuery.of(context).size.width * 0.48),
                                 painter: const HomeClip1(Color(0xffADB6E5)),
                               ),
                             ],
@@ -123,10 +123,15 @@ class _HomeState extends State<Home> {
                 ),
 
                 /// Dashboard Body
-                const Row(
-                  children: [
-                    Text('Top Gainers', style: TextStyle(color: Colors.white)),
-                  ],
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('TOP GAINERS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
+                      Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
+                    ],
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
