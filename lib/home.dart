@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:stockup_app/home_clip_1.dart';
 
+import 'chart.dart';
+import 'home_clip_2.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -20,7 +23,7 @@ class _HomeState extends State<Home> {
             child: Column(
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * .5,
+                  height: MediaQuery.of(context).size.height * .55,
                   child: Stack(
                     children: [
                       /// Background
@@ -43,11 +46,10 @@ class _HomeState extends State<Home> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              CircleAvatar(
-                                backgroundColor: Color(0xffAD3B42),
-                                maxRadius: 28,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.all(Radius.circular(50)),
+                              ClipOval(
+                                child: CircleAvatar(
+                                  backgroundColor: Color(0xffAD3B42),
+                                  maxRadius: 28,
                                   child: Image(
                                     image: ExactAssetImage('assets/images/profile.jpg'),
                                     fit: BoxFit.fitHeight,
@@ -96,23 +98,28 @@ class _HomeState extends State<Home> {
 
                       /// Dashboard Head
                       Positioned(
-                        width: MediaQuery.of(context).size.width + 45,
+                        width: MediaQuery.of(context).size.width + 50,
                         top: 180,
+                        // right: 5,
                         height: 230,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          padding: const EdgeInsets.symmetric(horizontal: 0 /*30*/),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              CustomPaint(
-                                size: Size.fromWidth(MediaQuery.of(context).size.width * 0.48),
-                                painter: const HomeClip1(Color(0xffCECB7D)),
+                              buildBoardA(
+                                context,
+                                const Color(0xffCECB7D),
+                                const Color(0xff579B34),
+                                ('NIFTY 50', '18,755.45', '+70.5 (0.37)'),
                               ),
-                              CustomPaint(
-                                size: Size.fromWidth(MediaQuery.of(context).size.width * 0.48),
-                                painter: const HomeClip1(Color(0xffADB6E5)),
+                              buildBoardA(
+                                context,
+                                const Color(0xffADB6E5),
+                                const Color(0xffB8232D),
+                                ('NIFTY 50', '18,755.45', '+70.5 (0.37)'),
                               ),
                             ],
                           ),
@@ -137,21 +144,35 @@ class _HomeState extends State<Home> {
                   margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   color: const Color(0xff161616),
                   height: 150,
+                  child: CustomPaint(
+                    size: Size.fromWidth(MediaQuery.of(context).size.width * 0.48),
+                    painter: const HomeClip2(Colors.red),
+                  ),
                 ),
-                const Row(
-                  children: [
-                    Text('Top Gainers', style: TextStyle(color: Colors.white)),
-                  ],
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('TOP LOOSERS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
+                      Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
+                    ],
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   color: const Color(0xff161616),
                   height: 150,
                 ),
-                const Row(
-                  children: [
-                    Text('Top Gainers', style: TextStyle(color: Colors.white)),
-                  ],
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('STOCK IN NEWS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
+                      Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
+                    ],
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
@@ -174,6 +195,46 @@ class _HomeState extends State<Home> {
             ),
           )
         ],
+      ),
+    );
+  }
+
+  CustomPaint buildBoardA(BuildContext context, Color bgColor, Color textColor, (String, String, String) text) {
+    return CustomPaint(
+      size: Size.fromWidth(MediaQuery.of(context).size.width * 0.48),
+      painter: HomeClip1(bgColor),
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * .47,
+        height: MediaQuery.of(context).size.height * .25,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 18),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+              child: Text('NIFTY 50', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+              child: Text(
+                '18,755.45',
+                style: TextStyle(fontSize: 23, fontWeight: FontWeight.w700),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+              child: Text(
+                '+70.5 (0.37%)',
+                style: TextStyle(fontSize: 15, color: textColor, fontWeight: FontWeight.w600),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 26, left: 20),
+              child: LinePlot(height: 85, color: textColor),
+            ),
+            //const SizedBox(height: 30),
+          ],
+        ),
       ),
     );
   }
