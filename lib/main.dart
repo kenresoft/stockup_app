@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fontresoft/fontresoft.dart';
 
 import 'home.dart';
 
@@ -15,8 +16,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        brightness: Brightness.light,
+        colorSchemeSeed: const Color(0xff84CEFE),
+        fontFamily: FontResoft.lato,
+        package: FontResoft.package,
+        highlightColor: Colors.transparent,
+        splashColor: Colors.transparent,
       ),
       routes: {
         '/': (context) => const Home(),
