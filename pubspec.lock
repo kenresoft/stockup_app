@@ -91,6 +91,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  fontresoft:
+    dependency: "direct main"
+    description:
+      name: fontresoft
+      sha256: b909c8913e34ab9d9380cb7420cac492faaf39931aa6e01b766bb386342414a9
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   lints:
     dependency: transitive
     description:
@@ -202,4 +210,4 @@ packages:
     version: "0.3.0"
 sdks:
   dart: ">=3.2.6 <4.0.0"
-  flutter: ">=3.16.0"
+  flutter: ">=3.16.5"

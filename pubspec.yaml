@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
+  fontresoft: ^0.0.3
   fl_chart: ^0.66.2
 
 dev_dependencies:
