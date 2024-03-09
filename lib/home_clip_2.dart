@@ -12,13 +12,14 @@ class HomeClip2 extends CustomPainter {
 
     /// OUTLINE BORDER
     final outlinePaint = Paint()
-      ..color = const Color(0xff121212)
+      ..color = const Color(0xff2D2D2D)
       ..style = PaintingStyle.stroke
       ..strokeJoin = StrokeJoin.round
       ..strokeCap = StrokeCap.round
-      ..strokeWidth = 15;
+      ..strokeWidth = 2;
 
     var outlinePath = layerPath(width, height, outlinePaint);
+    outlinePath = outlinePath.shift(const Offset(0, 22));
     canvas.drawPath(outlinePath, outlinePaint);
 
     /// FILL
@@ -26,30 +27,37 @@ class HomeClip2 extends CustomPainter {
       ..color = color
       ..style = PaintingStyle.fill;
 
-    var fillPath = layerPath(width - 8, height - 8, fillPaint);
-    fillPath = fillPath.shift(const Offset(4, 4));
+    var fillPath = layerPath(width, height, fillPaint);
+    fillPath = fillPath.shift(const Offset(0, 22));
     canvas.drawPath(fillPath, fillPaint);
   }
 
   Path layerPath(double width, double height, Paint paint) {
     final path = Path()
-      ..moveTo(35, 0)
+      ..moveTo(0, 0)
+      ..arcToPoint(Offset(35, -15), radius: const Radius.circular(20), clockwise: true)
+      ..arcToPoint(Offset(70, 0), radius: const Radius.circular(45), clockwise: false)
 
-    /// Top Right
-      ..lineTo(width - 85, 0)
-      ..arcToPoint(Offset(width - 50, 30), radius: const Radius.circular(35), clockwise: true)
+      /// Top Right
+      ..lineTo(width - 20, 0)
+      ..arcToPoint(Offset(width, 20), radius: const Radius.circular(20), clockwise: true)
 
-    /// Bottom Right
-      ..lineTo(width - 20, height - 42)
-      ..arcToPoint(Offset(width - 52, height), radius: const Radius.circular(34), clockwise: true)
+      ///
+      ..lineTo(width, height - 20)
+      ..arcToPoint(Offset(width - 20, height), radius: const Radius.circular(20), clockwise: true)
 
-    /// Bottom Left
-      ..lineTo(35, height)
-      ..arcToPoint(Offset(0, height - 35), radius: const Radius.circular(35), clockwise: true)
+      /// Bottom Right
+      ..lineTo(30, height)
+      ..arcToPoint(Offset(10, height - 20), radius: const Radius.circular(20), clockwise: true)
 
-    /// Top Left
-      ..lineTo(0, 35)
-      ..arcToPoint(const Offset(35, 0), radius: const Radius.circular(35), clockwise: true);
+      /// Bottom Left
+      ..lineTo(10, 70)
+      ..arcToPoint(Offset(5, 55), radius: const Radius.circular(35), clockwise: false)
+      ..arcToPoint(Offset(0, 30), radius: const Radius.circular(45), clockwise: true)
+
+      /// Top Left
+      ..lineTo(0, 0);
+    //..arcToPoint(const Offset(35, 0), radius: const Radius.circular(35), clockwise: true);
     return path;
   }
 
