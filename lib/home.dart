@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stockup_app/home_clip_1.dart';
 
@@ -15,15 +16,19 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: const Color(0xff84CEFE), toolbarHeight: 0, scrolledUnderElevation: 0),
+      //appBar: AppBar(backgroundColor: const Color(0xff84CEFE), toolbarHeight: 0, scrolledUnderElevation: 0),
       backgroundColor: const Color(0xff121212),
       body: Stack(
         children: [
           SingleChildScrollView(
             child: Column(
               children: [
+                Container(
+                  color: const Color(0xff84CEFE),
+                  height: 60,
+                ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * .55,
+                  height: MediaQuery.of(context).size.height * .45,
                   child: Stack(
                     children: [
                       /// Background
@@ -65,6 +70,7 @@ class _HomeState extends State<Home> {
                                 child: CircleAvatar(
                                   backgroundColor: Color(0xffB2DDF9),
                                   maxRadius: 27,
+                                  child: Icon(CupertinoIcons.bell, size: 28),
                                 ),
                               ),
                             ],
@@ -140,13 +146,19 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                  color: const Color(0xff161616),
-                  height: 150,
-                  child: CustomPaint(
-                    size: Size.fromWidth(MediaQuery.of(context).size.width * 0.48),
-                    painter: const HomeClip2(Colors.red),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
+                    child: Row(
+                      children: [
+                        buildBoardB(context),
+                        buildBoardB(context),
+                        buildBoardB(context),
+                        buildBoardB(context),
+                      ],
+                    ),
                   ),
                 ),
                 const Padding(
@@ -159,10 +171,20 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                  color: const Color(0xff161616),
-                  height: 150,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
+                    child: Row(
+                      children: [
+                        buildBoardB(context),
+                        buildBoardB(context),
+                        buildBoardB(context),
+                        buildBoardB(context),
+                      ],
+                    ),
+                  ),
                 ),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30),
@@ -174,10 +196,20 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                  color: const Color(0xff161616),
-                  height: 150,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
+                    child: Row(
+                      children: [
+                        buildBoardB(context),
+                        buildBoardB(context),
+                        buildBoardB(context),
+                        buildBoardB(context),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -192,6 +224,35 @@ class _HomeState extends State<Home> {
               margin: const EdgeInsets.symmetric(horizontal: 30),
               decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: const Center(child: Text('Home')),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Container buildBoardB(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 23),
+      height: 150,
+      child: Stack(
+        children: [
+          CustomPaint(
+            size: Size(MediaQuery.of(context).size.width * 0.38, 120),
+            painter: const HomeClip2(Color(0xff1A1A1A)),
+          ),
+          const Positioned(
+            top: 0,
+            child: ClipOval(
+              child: CircleAvatar(
+                child: Image(
+                  image: ExactAssetImage('assets/images/profile.jpg'),
+                  fit: BoxFit.fitHeight,
+                  height: 60,
+                  colorBlendMode: BlendMode.multiply,
+                  color: Color(0xffaaaaaa),
+                ),
+              ),
             ),
           )
         ],
