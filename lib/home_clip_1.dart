@@ -8,7 +8,7 @@ class HomeClip1 extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final double width = size.width;
-    final double height = size.height;
+    final double height = size.height + 10;
 
     /// OUTLINE BORDER
     final outlinePaint = Paint()
