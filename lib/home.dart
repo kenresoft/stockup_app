@@ -15,6 +15,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       //appBar: AppBar(backgroundColor: const Color(0xff84CEFE), toolbarHeight: 0, scrolledUnderElevation: 0),
       backgroundColor: const Color(0xff121212),
@@ -25,37 +27,37 @@ class _HomeState extends State<Home> {
               children: [
                 Container(
                   color: const Color(0xff84CEFE),
-                  height: 60,
+                  height: height * .05,
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * .45,
+                  height: height * .45,
                   child: Stack(
                     children: [
                       /// Background
                       Positioned(
                         top: 0,
-                        height: 250,
-                        width: MediaQuery.of(context).size.width,
+                        height: height * .3,
+                        width: width,
                         child: Container(
                           color: const Color(0xff84CEFE),
-                          height: 200,
+                          //height: 200,
                         ),
                       ),
 
                       /// Toolbar
                       Positioned(
                         top: 10,
-                        width: MediaQuery.of(context).size.width,
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 30),
+                        width: width,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               ClipOval(
                                 child: CircleAvatar(
-                                  backgroundColor: Color(0xffAD3B42),
-                                  maxRadius: 28,
-                                  child: Image(
+                                  backgroundColor: const Color(0xffAD3B42),
+                                  maxRadius: height * .03,
+                                  child: const Image(
                                     image: ExactAssetImage('assets/images/profile.jpg'),
                                     fit: BoxFit.fitHeight,
                                     height: 60,
@@ -65,12 +67,12 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               CircleAvatar(
-                                backgroundColor: Color(0xffffffff),
-                                maxRadius: 28,
+                                backgroundColor: const Color(0xffffffff),
+                                maxRadius: height * .03,
                                 child: CircleAvatar(
-                                  backgroundColor: Color(0xffB2DDF9),
-                                  maxRadius: 27,
-                                  child: Icon(CupertinoIcons.bell, size: 28),
+                                  backgroundColor: const Color(0xffB2DDF9),
+                                  maxRadius: (height * .03) - 1,
+                                  child: const Icon(CupertinoIcons.bell, size: 28),
                                 ),
                               ),
                             ],
@@ -80,8 +82,9 @@ class _HomeState extends State<Home> {
 
                       /// TextField
                       Positioned(
-                        width: MediaQuery.of(context).size.width,
-                        top: 90,
+                        width: width,
+                        top: (height * .2) / 2,
+                        height: height * .055,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 30),
                           child: TextField(
@@ -104,10 +107,10 @@ class _HomeState extends State<Home> {
 
                       /// Dashboard Head
                       Positioned(
-                        width: MediaQuery.of(context).size.width + 50,
-                        top: 180,
+                        width: width + 50,
+                        top: height * .2,
                         // right: 5,
-                        height: 230,
+                        height: height * .23,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 0 /*30*/),
                           child: Row(
@@ -218,8 +221,8 @@ class _HomeState extends State<Home> {
           /// Bottom Nav
           Positioned(
             bottom: 30,
-            height: 60,
-            width: MediaQuery.of(context).size.width,
+            height: height * .07,
+            width: width,
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 30),
               decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(20)),
@@ -232,13 +235,16 @@ class _HomeState extends State<Home> {
   }
 
   Container buildBoardB(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    debugPrint(height.toString());
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 23),
-      height: 150,
+      margin: EdgeInsets.symmetric(horizontal: 15, vertical: height * 0.014),
+      height: height * .18,
       child: Stack(
         children: [
           CustomPaint(
-            size: Size(MediaQuery.of(context).size.width * 0.38, 120),
+            size: Size(width * 0.38, height * 0.123),
             painter: const HomeClip2(Color(0xff1A1A1A)),
           ),
           const Positioned(
@@ -260,17 +266,20 @@ class _HomeState extends State<Home> {
     );
   }
 
-  CustomPaint buildBoardA(BuildContext context, Color bgColor, Color textColor, (String, String, String) text) {
+  Widget buildBoardA(BuildContext context, Color bgColor, Color textColor, (String, String, String) text) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return CustomPaint(
-      size: Size.fromWidth(MediaQuery.of(context).size.width * 0.48),
+      //size: Size.fromWidth(width * 0.48),
+      size: Size((width * 0.48).log, (height * .23).log),
       painter: HomeClip1(bgColor),
       child: SizedBox(
-        width: MediaQuery.of(context).size.width * .47,
-        height: MediaQuery.of(context).size.height * .25,
+        width: width * .47,
+        height: height * .23,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 18),
+            SizedBox(height: height * .015),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
               child: Text('NIFTY 50', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
@@ -283,7 +292,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
               child: Text(
                 '+70.5 (0.37%)',
                 style: TextStyle(fontSize: 15, color: textColor, fontWeight: FontWeight.w600),
@@ -291,12 +300,19 @@ class _HomeState extends State<Home> {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 26, left: 20),
-              child: LinePlot(height: 85, color: textColor),
+              child: LinePlot(height: height * .09, color: textColor),
             ),
             //const SizedBox(height: 30),
           ],
         ),
       ),
     );
+  }
+}
+
+extension Log<T> on T {
+  T get log {
+    debugPrint(toString());
+    return this;
   }
 }
