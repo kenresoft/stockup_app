@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fontresoft/fontresoft.dart';
 
-import 'home.dart';
+import 'ui/home.dart';
 
 void main() {
   runApp(const MyApp());

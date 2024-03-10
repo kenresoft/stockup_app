@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stockup_app/shapes/home_clip_1.dart';
-
-import '../plots/chart.dart';
-import '../shapes/home_clip_2.dart';
+import 'package:stockup_app/plot/chart.dart';
+import 'package:stockup_app/shape/home_clip_1.dart';
+import 'package:stockup_app/shape/home_clip_2.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
