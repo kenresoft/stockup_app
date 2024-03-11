@@ -220,14 +220,65 @@ class _HomeState extends State<Home> {
           /// Bottom Nav
           Positioned(
             bottom: 30,
-            height: height * .07,
-            width: width,
+            width: 300,
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 30),
-              decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-              child: const Center(child: Text('Home')),
+              height: 100,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Positioned(
+                    bottom: 30,
+                    height: 50,
+                    width: 50,
+                    child: Container(
+                      decoration: BoxDecoration(color: const Color(0xff202020), borderRadius: BorderRadius.circular(35)),
+                      child: const Center(child: Text('Home')),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 30,
+                    height: 50,
+                    width: 50,
+                    left: 40,
+                    child: Container(
+                      decoration: BoxDecoration(color: const Color(0xff202020), borderRadius: BorderRadius.circular(35)),
+                      child: const Center(child: Text('Home')),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 30,
+                    height: 50,
+                    width: 50,
+                    left: 80,
+                    child: Container(
+                      decoration: BoxDecoration(color: const Color(0xff202020), borderRadius: BorderRadius.circular(35)),
+                      child: const Center(child: Text('Home')),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 30,
+                    height: 50,
+                    width: 50,
+                    left: 120,
+                    child: Container(
+                      decoration: BoxDecoration(color: const Color(0xff202020), borderRadius: BorderRadius.circular(35)),
+                      child: const Center(child: Text('Home')),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 30,
+                    height: 50,
+                    width: 50,
+                    left: 160,
+                    child: Container(
+                      decoration: BoxDecoration(color: const Color(0xff202020), borderRadius: BorderRadius.circular(35)),
+                      child: const Center(child: Text('Home')),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
