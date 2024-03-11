@@ -220,66 +220,40 @@ class _HomeState extends State<Home> {
           /// Bottom Nav
           Positioned(
             bottom: 30,
-            width: 300,
-            child: Container(
-              height: 100,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned(
-                    bottom: 30,
-                    height: 50,
-                    width: 50,
-                    child: Container(
-                      decoration: BoxDecoration(color: const Color(0xff202020), borderRadius: BorderRadius.circular(35)),
-                      child: const Center(child: Text('Home')),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 30,
-                    height: 50,
-                    width: 50,
-                    left: 40,
-                    child: Container(
-                      decoration: BoxDecoration(color: const Color(0xff202020), borderRadius: BorderRadius.circular(35)),
-                      child: const Center(child: Text('Home')),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 30,
-                    height: 50,
-                    width: 50,
-                    left: 80,
-                    child: Container(
-                      decoration: BoxDecoration(color: const Color(0xff202020), borderRadius: BorderRadius.circular(35)),
-                      child: const Center(child: Text('Home')),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 30,
-                    height: 50,
-                    width: 50,
-                    left: 120,
-                    child: Container(
-                      decoration: BoxDecoration(color: const Color(0xff202020), borderRadius: BorderRadius.circular(35)),
-                      child: const Center(child: Text('Home')),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 30,
-                    height: 50,
-                    width: 50,
-                    left: 160,
-                    child: Container(
-                      decoration: BoxDecoration(color: const Color(0xff202020), borderRadius: BorderRadius.circular(35)),
-                      child: const Center(child: Text('Home')),
-                    ),
-                  ),
-                ],
-              ),
+            width: width,
+            height: 100,
+            left: width / 4,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                buildNavIcon(0, CupertinoIcons.house_alt),
+                buildNavIcon(40, CupertinoIcons.bookmark),
+                buildNavIcon(80, CupertinoIcons.bag),
+                buildNavIcon(120, CupertinoIcons.square_list),
+                buildNavIcon(160, CupertinoIcons.person),
+              ],
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget buildNavIcon(double position, IconData iconData) {
+    return Positioned(
+      bottom: 30,
+      height: 50,
+      width: 50,
+      left: position,
+      child: Container(
+        decoration: BoxDecoration(
+          color: const Color(0xff202020),
+          borderRadius: BorderRadius.circular(35),
+        ),
+        child: Icon(
+          iconData,
+          color: Colors.white,
+        ),
       ),
     );
   }
