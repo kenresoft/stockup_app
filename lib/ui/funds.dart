@@ -140,34 +140,44 @@ class _FundsState extends State<Funds> {
 
             /// Dashboard Body
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30),
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 21),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('TOP GAINERS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
-                  Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
+                  Text(
+                    'Recent Transactions',
+                    style: TextStyle(color: Color(0xffCFCFCF), fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                  Icon(Icons.calendar_today_outlined, color: Color(0xffCFCFCF), size: 23,),
                 ],
               ),
             ),
 
-            ListView.builder(
-              itemCount: 8,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return const ListTile(
-                  leading: CircleAvatar(
-                    backgroundColor: Color(0xff222222),
-                    maxRadius: 25,
-                    child: Icon(Icons.wallet, color: Color(0xff9CECAE)),
-                  ),
-                  title: Text(
-                    'Add Money',
-                    style: TextStyle(color: Color(0xff888888)),
-                  ),
-                  subtitle: Text('12 June, 2023'),
-                  trailing: Text('+ 2,000'),
-                );
-              },
+            SizedBox(
+              height: height / 2,
+              child: ListView.builder(
+                itemCount: 18,
+                padding: EdgeInsets.zero,
+                itemBuilder: (context, index) {
+                  return const ListTile(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 25),
+                    leading: CircleAvatar(
+                      backgroundColor: Color(0xff222222),
+                      maxRadius: 25,
+                      child: Icon(CupertinoIcons.bag_badge_plus, color: Color(0xff9CECAE)),
+                    ),
+                    title: Text(
+                      'Add Money',
+                      style: TextStyle(color: Color(0xffcccccc), fontSize: 14, fontWeight: FontWeight.w800),
+                    ),
+                    subtitle: Text(
+                      '12 June, 2023',
+                      style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xff494949)),
+                    ),
+                    trailing: Text('+ 2,000', style: TextStyle(fontSize: 16, color: Color(0xff9CECAE))),
+                  );
+                },
+              ),
             ),
           ],
         ),
