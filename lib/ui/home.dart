@@ -88,6 +88,9 @@ class _HomeState extends State<Home> {
                           padding: const EdgeInsets.symmetric(horizontal: 30),
                           child: TextField(
                             decoration: InputDecoration(
+                              prefixIcon: const Icon(CupertinoIcons.search, size: 30),
+                              suffixIcon: const Icon(CupertinoIcons.slider_horizontal_3),
+                              hintText: 'Search here..',
                               filled: true,
                               contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
                               fillColor: const Color(0xffB2DDF9),
