@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fontresoft/fontresoft.dart';
-
-import 'ui/home.dart';
+import 'package:stockup_app/ui/funds.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,8 +24,9 @@ class MyApp extends StatelessWidget {
         splashColor: Colors.transparent,
       ),
       routes: {
-        '/': (context) => const Home(),
-        '': (context) => const Home(),
+        //'/': (context) => const Home(),
+        '/': (context) => const Funds(),
+        '/funds': (context) => const Funds(),
       },
     );
   }
