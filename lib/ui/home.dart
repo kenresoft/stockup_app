@@ -155,10 +155,10 @@ class _HomeState extends State<Home> {
                     physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
                     child: Row(
                       children: [
-                        buildBoardB(context),
-                        buildBoardB(context),
-                        buildBoardB(context),
-                        buildBoardB(context),
+                        buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86 (5.71%)'),
+                        buildBoardB(context, 'WIPRO', '383.35', '+ 24.56 (5.11%)'),
+                        buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86 (5.71%)'),
+                        buildBoardB(context, 'WIPRO', '383.35', '+ 24.56 (5.11%)'),
                       ],
                     ),
                   ),
@@ -180,10 +180,10 @@ class _HomeState extends State<Home> {
                     physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
                     child: Row(
                       children: [
-                        buildBoardB(context),
-                        buildBoardB(context),
-                        buildBoardB(context),
-                        buildBoardB(context),
+                        buildBoardB(context, 'BAJAJ FINSERY', '1,510.96', '- 15.56 (0.23%)'),
+                        buildBoardB(context, 'EXIDE IND.', '220.50', '- 13.76 (0.4%)'),
+                        buildBoardB(context, 'BAJAJ FINSERY', '1,510.96', '- 15.56 (0.23%)'),
+                        buildBoardB(context, 'EXIDE IND.', '220.50', '- 13.76 (0.4%)'),
                       ],
                     ),
                   ),
@@ -205,10 +205,10 @@ class _HomeState extends State<Home> {
                     physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
                     child: Row(
                       children: [
-                        buildBoardB(context),
-                        buildBoardB(context),
-                        buildBoardB(context),
-                        buildBoardB(context),
+                        buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
+                        buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
+                        buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
+                        buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
                       ],
                     ),
                   ),
@@ -228,9 +228,37 @@ class _HomeState extends State<Home> {
               children: [
                 buildNavIcon(0, CupertinoIcons.house_alt),
                 buildNavIcon(40, CupertinoIcons.bookmark),
-                buildNavIcon(80, CupertinoIcons.bag),
-                buildNavIcon(120, CupertinoIcons.square_list),
-                buildNavIcon(160, CupertinoIcons.person),
+                buildNavIcon(140, CupertinoIcons.square_list),
+                buildNavIcon(180, CupertinoIcons.person),
+                Positioned(
+                  bottom: 20,
+                  height: 70,
+                  width: 70,
+                  left: 80,
+                  child: Card(
+                    color: const Color(0xff202020),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
+                    elevation: 0,
+                    shadowColor: Colors.grey,
+                    margin: EdgeInsets.zero,
+                    surfaceTintColor: const Color(0xff202020),
+                    /* decoration: BoxDecoration(
+                      color: const Color(0xff202020),
+                      borderRadius: BorderRadius.circular(35),
+                      boxShadow: const [
+                        BoxShadow(offset: Offset(0, -1), spreadRadius: 0, blurRadius: 1, color: Colors.grey),
+                      ],
+                    )*/
+                    child: Container(
+                      margin: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(color: const Color(0xff85CFFF), borderRadius: BorderRadius.circular(35)),
+                      child: const Icon(
+                        CupertinoIcons.bag,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -245,11 +273,13 @@ class _HomeState extends State<Home> {
       height: 50,
       width: 50,
       left: position,
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xff202020),
-          borderRadius: BorderRadius.circular(35),
-        ),
+      child: Card(
+        color: const Color(0xff202020),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
+        elevation: 0,
+        shadowColor: Colors.grey,
+        margin: EdgeInsets.zero,
+        surfaceTintColor: const Color(0xff202020),
         child: Icon(
           iconData,
           color: Colors.white,
@@ -258,7 +288,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Container buildBoardB(BuildContext context) {
+  Container buildBoardB(BuildContext context, String text1, String text2, String text3) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     debugPrint(height.toString());
@@ -284,7 +314,32 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-          )
+          ),
+          Positioned(
+            top: 45,
+            height: 90,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(text1, style: const TextStyle(color: Colors.white)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 32),
+                    child: Text(text2, style: const TextStyle(color: Colors.white, fontSize: 18)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 32),
+                    child: Text(text3, style: TextStyle(color: text3.contains('-') ? Colors.red : Colors.green)),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
