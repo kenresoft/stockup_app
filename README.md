@@ -3,9 +3,11 @@
 Stockup is your go-to app for staying ahead in the stock market game. Whether you're a seasoned investor or just starting out, Stockup provides you
 with the tools and insights you need to make informed decisions and maximize your returns.
 
-| Home Screen                                                                                             | Funds Screen                                                                                    |
-|---------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
-| ![Screenshot 1](https://github.com/kenresoft/stock_up/blob/master/screenshots/home_screen.png?raw=true) | ![ScreenShot 2](https://github.com/kenresoft/stock_up/blob/master/screenshots\funds_screen.png) |
+## Screenshots
+
+| Home Screen                                                                                                | Funds Screen                                                                                       |
+|------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| ![Screenshot 1](https://github.com/kenresoft/stockup_app/blob/master/screenshots/home_screen.png?raw=true) | ![ScreenShot 2](https://github.com/kenresoft/stockup_app/blob/master/screenshots\funds_screen.png) |
 
 ### Attribution
 
