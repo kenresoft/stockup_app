@@ -5,9 +5,9 @@ with the tools and insights you need to make informed decisions and maximize you
 
 ## Screenshots
 
-| Home Screen                                                                                                | Funds Screen                                                                                       |
-|------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| ![Screenshot 1](https://github.com/kenresoft/stockup_app/blob/master/screenshots/home_screen.png?raw=true) | ![ScreenShot 2](https://github.com/kenresoft/stockup_app/blob/master/screenshots\funds_screen.png) |
+| Home Screen                                                                                                | Funds Screen                                                                                                |
+|------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| ![Screenshot 1](https://github.com/kenresoft/stockup_app/blob/master/screenshots/home_screen.png?raw=true) | ![ScreenShot 2](https://github.com/kenresoft/stockup_app/blob/master/screenshots/funds_screen.png?raw=true) |
 
 ### Attribution
 
