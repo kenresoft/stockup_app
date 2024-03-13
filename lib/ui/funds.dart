@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stockup_app/shape/funds_clip.dart';
 import 'package:stockup_app/shape/funds_divider_clip.dart';
-import 'package:stockup_app/shape/home_clip_2.dart';
 
 class Funds extends StatefulWidget {
   const Funds({super.key});
@@ -27,13 +26,13 @@ class _FundsState extends State<Funds> {
               height: height * .05,
             ),
             SizedBox(
-              height: height * .37,
+              height: height * .33,
               child: Stack(
                 children: [
                   /// Background
                   Positioned(
                     top: 0,
-                    height: height * .3,
+                    height: height * .26,
                     width: width,
                     child: Container(color: const Color(0xff84CEFE)),
                   ),
@@ -42,32 +41,14 @@ class _FundsState extends State<Funds> {
                   Positioned(
                     top: 10,
                     width: width,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 30),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          ClipOval(
-                            child: CircleAvatar(
-                              backgroundColor: const Color(0xffAD3B42),
-                              maxRadius: height * .03,
-                              child: const Image(
-                                image: ExactAssetImage('assets/images/profile.jpg'),
-                                fit: BoxFit.fitHeight,
-                                height: 60,
-                                colorBlendMode: BlendMode.multiply,
-                                color: Color(0xffAD3B42),
-                              ),
-                            ),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: const Color(0xffffffff),
-                            maxRadius: height * .03,
-                            child: CircleAvatar(
-                              backgroundColor: const Color(0xffB2DDF9),
-                              maxRadius: (height * .03) - 1,
-                              child: const Icon(CupertinoIcons.bell, size: 28),
-                            ),
+                          Icon(CupertinoIcons.arrow_left),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 25),
+                            child: Text('Funds', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                           ),
                         ],
                       ),
@@ -78,26 +59,13 @@ class _FundsState extends State<Funds> {
                   Positioned(
                     width: width,
                     top: (height * .2) / 2,
-                    height: height * .055,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(CupertinoIcons.search, size: 30),
-                          suffixIcon: const Icon(CupertinoIcons.slider_horizontal_3),
-                          hintText: 'Search here..',
-                          filled: true,
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
-                          fillColor: const Color(0xffB2DDF9),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                            borderSide: const BorderSide(color: Colors.white),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                            borderSide: const BorderSide(color: Colors.white),
-                          ),
-                        ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      child: Column(
+                        children: [
+                          Text('Total Available Balance'),
+                          Text('10,245.00', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                        ],
                       ),
                     ),
                   ),
@@ -105,13 +73,13 @@ class _FundsState extends State<Funds> {
                   /// Dashboard Head
                   Positioned(
                     width: width,
-                    top: height * .2599,
+                    top: height * .2199,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        buildBoardA(const Color(0xff9CECAE), CupertinoIcons.creditcard),
-                        buildBoardA(const Color(0xffECB39C), CupertinoIcons.arrow_down_doc),
+                        buildBoardA(width, height, const Color(0xff9CECAE), CupertinoIcons.bag_badge_plus),
+                        buildBoardA(width, height, const Color(0xffECB39C), CupertinoIcons.arrow_down_doc),
                       ],
                     ),
                   ),
@@ -161,25 +129,33 @@ class _FundsState extends State<Funds> {
             SizedBox(
               height: height / 2,
               child: ListView.builder(
-                itemCount: 18,
+                itemCount: transactions.length,
                 padding: EdgeInsets.zero,
                 itemBuilder: (context, index) {
-                  return const ListTile(
-                    contentPadding: EdgeInsets.symmetric(horizontal: 25),
+                  return ListTile(
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 25),
                     leading: CircleAvatar(
-                      backgroundColor: Color(0xff222222),
+                      backgroundColor: const Color(0xff222222),
                       maxRadius: 25,
-                      child: Icon(CupertinoIcons.bag_badge_plus, color: Color(0xff9CECAE)),
+                      child: transactions[index].amount.contains('+')
+                          ? const Icon(CupertinoIcons.bag_badge_plus, color: Color(0xff9CECAE))
+                          : const Icon(CupertinoIcons.arrow_down_doc, color: Color(0xffECB39C)),
                     ),
                     title: Text(
-                      'Add Money',
-                      style: TextStyle(color: Color(0xffcccccc), fontSize: 14, fontWeight: FontWeight.w800),
+                      transactions[index].amount.contains('+') ? 'Add Money' : 'Withdraw Money',
+                      style: const TextStyle(color: Color(0xffcccccc), fontSize: 14, fontWeight: FontWeight.w800),
                     ),
                     subtitle: Text(
-                      '12 June, 2023',
-                      style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xff494949)),
+                      transactions[index].date,
+                      style: const TextStyle(fontWeight: FontWeight.w600, color: Color(0xff494949)),
                     ),
-                    trailing: Text('+ 2,000', style: TextStyle(fontSize: 16, color: Color(0xff9CECAE))),
+                    trailing: Text(
+                      transactions[index].amount,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: transactions[index].amount.contains('+') ? const Color(0xff9CECAE) : const Color(0xffECB39C),
+                      ),
+                    ),
                   );
                 },
               ),
@@ -190,88 +166,10 @@ class _FundsState extends State<Funds> {
     );
   }
 
-  Widget buildNavIcon(double position, IconData iconData) {
-    return Positioned(
-      bottom: 30,
-      height: 50,
-      width: 50,
-      left: position,
-      child: Card(
-        color: const Color(0xff202020),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
-        elevation: 0,
-        shadowColor: Colors.grey,
-        margin: EdgeInsets.zero,
-        surfaceTintColor: const Color(0xff202020),
-        child: Icon(
-          iconData,
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-
-  Container buildBoardB(BuildContext context, String text1, String text2, String text3) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    debugPrint(height.toString());
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 15, vertical: height * 0.014),
-      height: height * .18,
-      child: Stack(
-        children: [
-          CustomPaint(
-            size: Size(width * 0.38, height * 0.123),
-            painter: const HomeClip2(Color(0xff1A1A1A)),
-          ),
-          const Positioned(
-            top: 0,
-            child: ClipOval(
-              child: CircleAvatar(
-                child: Image(
-                  image: ExactAssetImage('assets/images/profile.jpg'),
-                  fit: BoxFit.fitHeight,
-                  height: 60,
-                  colorBlendMode: BlendMode.multiply,
-                  color: Color(0xffaaaaaa),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 45,
-            height: 90,
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(text1, style: const TextStyle(color: Colors.white)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32),
-                    child: Text(text2, style: const TextStyle(color: Colors.white, fontSize: 18)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32),
-                    child: Text(text3, style: TextStyle(color: text3.contains('-') ? Colors.red : Colors.green)),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildBoardA(Color bgColor, IconData iconData) {
+  Widget buildBoardA(double width, double height, Color bgColor, IconData iconData) {
     return SizedBox(
-      width: 83,
-      height: 100,
+      width: width * 0.2,
+      height: height * 0.11,
       child: CustomPaint(
         painter: FundsClip(bgColor),
         child: Icon(
@@ -281,6 +179,15 @@ class _FundsState extends State<Funds> {
       ),
     );
   }
+
+  final List<Transaction> transactions = [
+    Transaction('12 June, 2023', '+ 2,000'),
+    Transaction('02 June, 2023', '+ 4,000'),
+    Transaction('25 May, 2023', '- 2,800'),
+    Transaction('20 May. 2023', '+ 7,000'),
+    Transaction('07 April, 2023', '+ 1,000'),
+    Transaction('03 March, 2023', '- 9,000'),
+  ];
 }
 
 extension Log<T> on T {
@@ -288,4 +195,11 @@ extension Log<T> on T {
     debugPrint(toString());
     return this;
   }
+}
+
+class Transaction {
+  Transaction(this.date, this.amount);
+
+  final String date;
+  final String amount;
 }
