@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stockup_app/shape/funds_clip.dart';
+import 'package:stockup_app/shape/funds_divider_clip.dart';
 import 'package:stockup_app/shape/home_clip_2.dart';
 
 class Funds extends StatefulWidget {
@@ -26,7 +27,7 @@ class _FundsState extends State<Funds> {
               height: height * .05,
             ),
             SizedBox(
-              height: height * .45,
+              height: height * .37,
               child: Stack(
                 children: [
                   /// Background
@@ -34,10 +35,7 @@ class _FundsState extends State<Funds> {
                     top: 0,
                     height: height * .3,
                     width: width,
-                    child: Container(
-                      color: const Color(0xff84CEFE),
-                      //height: 200,
-                    ),
+                    child: Container(color: const Color(0xff84CEFE)),
                   ),
 
                   /// Toolbar
@@ -107,20 +105,38 @@ class _FundsState extends State<Funds> {
                   /// Dashboard Head
                   Positioned(
                     width: width,
-                    top: height * .199,
-                    height: height * .23,
+                    top: height * .2599,
                     child: Row(
-                      mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        buildBoardA(const Color(0xff9CECAE)),
-                        buildBoardA(const Color(0xffECB39C)),
+                        buildBoardA(const Color(0xff9CECAE), CupertinoIcons.creditcard),
+                        buildBoardA(const Color(0xffECB39C), CupertinoIcons.arrow_down_doc),
                       ],
                     ),
                   ),
                 ],
               ),
+            ),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 60),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Add Money', style: TextStyle(color: Colors.white, fontSize: 18)),
+                  Text('Withdrawal', style: TextStyle(color: Colors.white, fontSize: 18)),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            Container(
+              height: 15,
+              width: width,
+              margin: const EdgeInsets.symmetric(horizontal: 30),
+              child: CustomPaint(painter: FundsDividerClip()),
             ),
 
             /// Dashboard Body
@@ -252,14 +268,14 @@ class _FundsState extends State<Funds> {
     );
   }
 
-  Widget buildBoardA(Color bgColor) {
+  Widget buildBoardA(Color bgColor, IconData iconData) {
     return SizedBox(
       width: 83,
       height: 100,
       child: CustomPaint(
         painter: FundsClip(bgColor),
-        child: const Icon(
-          Icons.add_card,
+        child: Icon(
+          iconData,
           size: 45,
         ),
       ),
