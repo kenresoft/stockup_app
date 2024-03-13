@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stockup_app/plot/chart.dart';
-import 'package:stockup_app/shape/home_clip_1.dart';
+import 'package:stockup_app/shape/funds_clip.dart';
 import 'package:stockup_app/shape/home_clip_2.dart';
 
 class Funds extends StatefulWidget {
@@ -107,31 +106,17 @@ class _FundsState extends State<Funds> {
 
                   /// Dashboard Head
                   Positioned(
-                    width: width + 50,
-                    top: height * .2,
-                    // right: 5,
+                    width: width,
+                    top: height * .199,
                     height: height * .23,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 0 /*30*/),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          buildBoardA(
-                            context,
-                            const Color(0xffCECB7D),
-                            const Color(0xff579B34),
-                            ('NIFTY 50', '18,755.45', '+70.5 (0.37)'),
-                          ),
-                          buildBoardA(
-                            context,
-                            const Color(0xffADB6E5),
-                            const Color(0xffB8232D),
-                            ('NIFTY 50', '18,755.45', '+70.5 (0.37)'),
-                          ),
-                        ],
-                      ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildBoardA(const Color(0xff9CECAE)),
+                        buildBoardA(const Color(0xffECB39C)),
+                      ],
                     ),
                   ),
                 ],
@@ -148,7 +133,11 @@ class _FundsState extends State<Funds> {
                     'Recent Transactions',
                     style: TextStyle(color: Color(0xffCFCFCF), fontWeight: FontWeight.bold, fontSize: 16),
                   ),
-                  Icon(Icons.calendar_today_outlined, color: Color(0xffCFCFCF), size: 23,),
+                  Icon(
+                    Icons.calendar_today_outlined,
+                    color: Color(0xffCFCFCF),
+                    size: 23,
+                  ),
                 ],
               ),
             ),
@@ -263,44 +252,15 @@ class _FundsState extends State<Funds> {
     );
   }
 
-  Widget buildBoardA(BuildContext context, Color bgColor, Color textColor, (String, String, String) text) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    return CustomPaint(
-      //size: Size.fromWidth(width * 0.48),
-      size: Size((width * 0.48).log, (height * .23).log),
-      painter: HomeClip1(bgColor),
-      child: SizedBox(
-        width: width * .47,
-        height: height * .23,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: height * .015),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-              child: Text('NIFTY 50', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-              child: Text(
-                '18,755.45',
-                style: TextStyle(fontSize: 23, fontWeight: FontWeight.w700),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-              child: Text(
-                '+70.5 (0.37%)',
-                style: TextStyle(fontSize: 15, color: textColor, fontWeight: FontWeight.w600),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 26, left: 20),
-              child: LinePlot(height: height * .09, color: textColor),
-            ),
-            //const SizedBox(height: 30),
-          ],
+  Widget buildBoardA(Color bgColor) {
+    return SizedBox(
+      width: 83,
+      height: 100,
+      child: CustomPaint(
+        painter: FundsClip(bgColor),
+        child: const Icon(
+          Icons.add_card,
+          size: 45,
         ),
       ),
     );
