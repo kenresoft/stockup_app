@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
         package: FontResoft.package,
         highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
+        appBarTheme: AppBarTheme(toolbarHeight: 0)
       ),
       routes: {
         //'/': (context) => const Home(),
