@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fontresoft/fontresoft.dart';
 import 'package:stockup_app/ui/funds.dart';
+import 'package:stockup_app/ui/portfolio.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,8 +27,9 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         //'/': (context) => const Home(),
-        '/': (context) => const Funds(),
+        '/': (context) => const Portfolio(),
         '/funds': (context) => const Funds(),
+        '/portfolio': (context) => const Portfolio(),
       },
     );
   }
