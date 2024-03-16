@@ -18,38 +18,40 @@ class NavBarClip extends CustomPainter {
 
     final path = Path();
 
-    /* path.addOval(Rect.fromCircle(center: const Offset(25, 30), radius: 25));
-    path.addOval(Rect.fromCircle(center: const Offset(65, 30), radius: 25));
-    path.addOval(Rect.fromCircle(center: const Offset(115, 30), radius: 30));
-    path.addOval(Rect.fromCircle(center: const Offset(165, 30), radius: 25));
-    path.addOval(Rect.fromCircle(center: const Offset(205, 30), radius: 25));*/
-
     path.addOval(Rect.fromCircle(center: const Offset(25, 30), radius: 25));
-    path.addOval(Rect.fromCircle(center: const Offset(65, 30), radius: 25));
-
-    /*// Smooth curve between the two circles
-    path.moveTo(65, 55); // Move to the starting point of the curve
-    path.quadraticBezierTo(85, 85, 115, 55);   // Draw a quadratic bezier curve*/
-
-    path.addOval(Rect.fromCircle(center: const Offset(115, 30), radius: 30));
-    path.addOval(Rect.fromCircle(center: const Offset(165, 30), radius: 25));
-    path.addOval(Rect.fromCircle(center: const Offset(205, 30), radius: 25));
+    path.addOval(Rect.fromCircle(center: const Offset(70, 30), radius: 25));
+    path.addOval(Rect.fromCircle(center: const Offset(120, 30), radius: 30));
+    path.addOval(Rect.fromCircle(center: const Offset(170, 30), radius: 25));
+    path.addOval(Rect.fromCircle(center: const Offset(215, 30), radius: 25));
 
     canvas.drawPath(path, paint);
+
+    /// 1 - 2
     canvas.drawPath(
         Path()
-          ..moveTo(80, 13)
-          ..quadraticBezierTo(87.5, 22, 93, 13),
+          ..moveTo(40, 13)
+          ..quadraticBezierTo(47.5, 22, 55, 13),
         paint3);
+
+    /// 2 - 3
     canvas.drawPath(
         Path()
-          ..moveTo(137, 13)
-          ..quadraticBezierTo(142.5, 22, 150, 13),
+          ..moveTo(85, 13)
+          ..quadraticBezierTo(92.5, 22, 98, 13),
         paint3);
+
+    /// 3 - 4
     canvas.drawPath(
         Path()
-          ..moveTo(137, 13)
-          ..quadraticBezierTo(142.5, 22, 150, 13),
+          ..moveTo(142, 13)
+          ..quadraticBezierTo(147.5, 22, 155, 13),
+        paint3);
+
+    /// 4 - 5
+    canvas.drawPath(
+        Path()
+          ..moveTo(185, 13)
+          ..quadraticBezierTo(192.5, 22, 200, 13),
         paint3);
     //canvas.drawPath(path.shift(const Offset(0, 2)), paint2);
   }
