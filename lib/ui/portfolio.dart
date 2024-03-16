@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:stockup_app/plot/chart.dart';
 import 'package:stockup_app/shape/home_clip_1.dart';
 import 'package:stockup_app/shape/home_clip_2.dart';
+import 'package:stockup_app/shape/nav_bar_clip.dart';
 import 'package:stockup_app/shape/portfolio_clip.dart';
 
 class Portfolio extends StatefulWidget {
@@ -17,256 +19,281 @@ class _PortfolioState extends State<Portfolio> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Scaffold(
-      //appBar: AppBar(backgroundColor: const Color(0xff84CEFE), toolbarHeight: 0, scrolledUnderElevation: 0),
-      backgroundColor: const Color(0xff121212),
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  color: const Color(0xff2B2B2B),
-                  height: height * .05,
-                ),
-                SizedBox(
-                  height: height * .45,
-                  child: Stack(
-                    children: [
-                      /// Background
-                      Positioned(
-                        top: 0,
-                        height: height * .3,
-                        width: width,
-                        child: Container(
-                          color: const Color(0xff2B2B2B),
-                          //height: 200,
+    return AnnotatedRegion(
+      value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+      child: Scaffold(
+        backgroundColor: const Color(0xff121212),
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(color: const Color(0xff2B2B2B), height: height * .05),
+                  SizedBox(
+                    height: height * .45,
+                    child: Stack(
+                      children: [
+                        /// Background
+                        Positioned(
+                          top: -1,
+                          height: height * .3,
+                          width: width,
+                          child: Container(color: const Color(0xff2B2B2B)),
                         ),
-                      ),
 
-                      /// Toolbar
-                      Positioned(
-                        top: 10,
-                        width: width,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              ClipOval(
-                                child: CircleAvatar(
-                                  backgroundColor: const Color(0xffAD3B42),
-                                  maxRadius: height * .03,
-                                  child: const Image(
-                                    image: ExactAssetImage('assets/images/profile.jpg'),
-                                    fit: BoxFit.fitHeight,
-                                    height: 60,
-                                    colorBlendMode: BlendMode.multiply,
-                                    color: Color(0xffAD3B42),
+                        /// Toolbar
+                        Positioned(
+                          top: 10,
+                          width: width,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                ClipOval(
+                                  child: CircleAvatar(
+                                    backgroundColor: const Color(0xffAD3B42),
+                                    maxRadius: height * .03,
+                                    child: const Image(
+                                      image: ExactAssetImage('assets/images/profile.jpg'),
+                                      fit: BoxFit.fitHeight,
+                                      height: 60,
+                                      colorBlendMode: BlendMode.multiply,
+                                      color: Color(0xffAD3B42),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              CircleAvatar(
-                                backgroundColor: const Color(0xffffffff),
-                                maxRadius: height * .03,
-                                child: CircleAvatar(
-                                  backgroundColor: const Color(0xffB2DDF9),
-                                  maxRadius: (height * .03) - 1,
-                                  child: const Icon(CupertinoIcons.bell, size: 28),
+                                CircleAvatar(
+                                  backgroundColor: const Color(0xffffffff),
+                                  maxRadius: height * .03,
+                                  child: CircleAvatar(
+                                    backgroundColor: const Color(0xffB2DDF9),
+                                    maxRadius: (height * .03) - 1,
+                                    child: const Icon(CupertinoIcons.bell, size: 28),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
 
-                      /// TextField
-                      Positioned(
-                        width: width,
-                        top: (height * .2) / 2,
-                        height: height * .055,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              prefixIcon: const Icon(CupertinoIcons.search, size: 30),
-                              suffixIcon: const Icon(CupertinoIcons.slider_horizontal_3),
-                              hintText: 'Search here..',
-                              filled: true,
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
-                              fillColor: const Color(0xffB2DDF9),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
-                                borderSide: const BorderSide(color: Colors.white),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
-                                borderSide: const BorderSide(color: Colors.white),
+                        /// TextField
+                        Positioned(
+                          width: width,
+                          top: (height * .2) / 2,
+                          height: height * .055,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                prefixIcon: const Icon(CupertinoIcons.search, size: 30),
+                                suffixIcon: const Icon(CupertinoIcons.slider_horizontal_3),
+                                hintText: 'Search here..',
+                                filled: true,
+                                contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
+                                fillColor: const Color(0xffB2DDF9),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                  borderSide: const BorderSide(color: Colors.white),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                  borderSide: const BorderSide(color: Colors.white),
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
 
-                      /// Dashboard Head
-                      Positioned(
-                        width: width,
-                        top: height * .2,
-                        left: 5,
-                        height: height * .23,
-                        child: CustomPaint(painter: PortfolioClip()),
-                      ),
-                    ],
+                        /// Dashboard Head
+                        Positioned(
+                          width: width,
+                          top: height * .2,
+                          left: 5,
+                          height: height * .23,
+                          child: CustomPaint(painter: PortfolioClip()),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
 
-                /// Dashboard Body
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('TOP GAINERS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
-                      Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
+                  /// Dashboard Body
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ClipPath(
-                          /*clipper: ShapeBorderClipper(
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-                          ),*/
-                          clipper: BoardClip(),
-                          child: Container(
-                            width: 300,
-                            height: 100,
-                            color: Colors.red,
-                            child: Text('kndkwEnjwebngfjWBEN w egbjerbghberbg'),
-                          ),
-                        ),
-                        buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86 (5.71%)'),
-                        buildBoardB(context, 'WIPRO', '383.35', '+ 24.56 (5.11%)'),
-                        buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86 (5.71%)'),
-                        buildBoardB(context, 'WIPRO', '383.35', '+ 24.56 (5.11%)'),
+                        Text('TOP GAINERS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
+                        Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
                       ],
                     ),
                   ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('TOP LOOSERS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
-                      Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
+                      child: Row(
+                        children: [
+                          buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86 (5.71%)'),
+                          buildBoardB(context, 'WIPRO', '383.35', '+ 24.56 (5.11%)'),
+                          buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86 (5.71%)'),
+                          buildBoardB(context, 'WIPRO', '383.35', '+ 24.56 (5.11%)'),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CustomPaint(
-                          painter: PortfolioClip(),
-                          child: Container(
-                            width: 300,
-                            height: 100,
-                            child: Text('kndkwEnjwebngfjWBEN w egbjerbghberbg'),
-                            //color: Colors.red,
-                          ),
-                        ),
-                        buildBoardB(context, 'BAJAJ FINSERY', '1,510.96', '- 15.56 (0.23%)'),
-                        buildBoardB(context, 'EXIDE IND.', '220.50', '- 13.76 (0.4%)'),
-                        buildBoardB(context, 'BAJAJ FINSERY', '1,510.96', '- 15.56 (0.23%)'),
-                        buildBoardB(context, 'EXIDE IND.', '220.50', '- 13.76 (0.4%)'),
+                        Text('TOP LOOSERS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
+                        Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
                       ],
                     ),
                   ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('STOCK IN NEWS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
-                      Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
+                      child: Row(
+                        children: [
+                          buildBoardB(context, 'BAJAJ FINSERY', '1,510.96', '- 15.56 (0.23%)'),
+                          buildBoardB(context, 'EXIDE IND.', '220.50', '- 13.76 (0.4%)'),
+                          buildBoardB(context, 'BAJAJ FINSERY', '1,510.96', '- 15.56 (0.23%)'),
+                          buildBoardB(context, 'EXIDE IND.', '220.50', '- 13.76 (0.4%)'),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
-                        buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
-                        buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
-                        buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
+                        Text('STOCK IN NEWS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
+                        Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
                       ],
                     ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
+                      child: Row(
+                        children: [
+                          buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
+                          buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
+                          buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
+                          buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
 
-          /// Bottom Nav
-          Positioned(
-            bottom: 30,
-            width: width,
-            height: 100,
-            left: 448 / 4,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                buildNavIcon(0, CupertinoIcons.house_alt),
-                buildNavIcon(40, CupertinoIcons.bookmark),
-                buildNavIcon(140, CupertinoIcons.square_list),
-                buildNavIcon(180, CupertinoIcons.person),
-                Positioned(
-                  bottom: 20,
-                  height: 70,
-                  width: 70,
-                  left: 80,
-                  child: Card(
-                    color: const Color(0xff202020),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
-                    elevation: 0,
-                    shadowColor: Colors.grey,
-                    margin: EdgeInsets.zero,
-                    surfaceTintColor: const Color(0xff202020),
-                    /* decoration: BoxDecoration(
+            /// Bottom Nav
+            Positioned(
+              bottom: 30,
+              width: width,
+              height: 100,
+              left: 448 / 4,
+              child: Stack(
+                children: [
+                  CustomPaint(
+                    painter: NavBarClip(),
+                    child: const SizedBox(width: 230, height: 61),
+                  ),
+                  Positioned(
+                    top: 17.5,
+                    left: 12.5,
+                    child: GestureDetector(
+                      child: const Icon(Icons.home_filled),
+                    ),
+                  ),
+                  Positioned(
+                    top: 17.5,
+                    left: 57.5,
+                    child: GestureDetector(
+                      child: const Icon(Icons.home_filled),
+                    ),
+                  ),
+                  Positioned(
+                    top: 17.5,
+                    left: 107.5,
+                    child: GestureDetector(
+                      child: const Icon(Icons.home_filled),
+                    ),
+                  ),
+                  Positioned(
+                    top: 17.5,
+                    left: 157.5,
+                    child: GestureDetector(
+                      child: const Icon(Icons.home_filled),
+                    ),
+                  ),
+                  Positioned(
+                    top: 17.5,
+                    left: 203.5,
+                    child: GestureDetector(
+                      child: const Icon(Icons.home_filled),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            /*Positioned(
+              bottom: 30,
+              width: width,
+              height: 100,
+              left: 448 / 4,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  buildNavIcon(0, CupertinoIcons.house_alt),
+                  buildNavIcon(40, CupertinoIcons.bookmark),
+                  buildNavIcon(140, CupertinoIcons.square_list),
+                  buildNavIcon(180, CupertinoIcons.person),
+                  Positioned(
+                    bottom: 20,
+                    height: 70,
+                    width: 70,
+                    left: 80,
+                    child: Card(
                       color: const Color(0xff202020),
-                      borderRadius: BorderRadius.circular(35),
-                      boxShadow: const [
-                        BoxShadow(offset: Offset(0, -1), spreadRadius: 0, blurRadius: 1, color: Colors.grey),
-                      ],
-                    )*/
-                    child: Container(
-                      margin: const EdgeInsets.all(3),
-                      decoration: BoxDecoration(color: const Color(0xff85CFFF), borderRadius: BorderRadius.circular(35)),
-                      child: const Icon(
-                        CupertinoIcons.bag,
-                        color: Colors.white,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
+                      elevation: 0,
+                      shadowColor: Colors.grey,
+                      margin: EdgeInsets.zero,
+                      surfaceTintColor: const Color(0xff202020),
+                      */ /* decoration: BoxDecoration(
+                        color: const Color(0xff202020),
+                        borderRadius: BorderRadius.circular(35),
+                        boxShadow: const [
+                          BoxShadow(offset: Offset(0, -1), spreadRadius: 0, blurRadius: 1, color: Colors.grey),
+                        ],
+                      )*/ /*
+                      child: Container(
+                        margin: const EdgeInsets.all(3),
+                        decoration: BoxDecoration(color: const Color(0xff85CFFF), borderRadius: BorderRadius.circular(35)),
+                        child: const Icon(
+                          CupertinoIcons.bag,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-        ],
+                ],
+              ),
+            ),*/
+          ],
+        ),
       ),
     );
   }
@@ -406,36 +433,24 @@ class BoardClip extends CustomClipper<Path> {
     final width = size.width;
     final height = size.height;
 
-    final path = Path()
-      ..moveTo(0, 20)
+    var path = Path();
+    /*path.lineTo(0, size.height - 50);
+    path.quadraticBezierTo(size.width / 2, size.height, size.width, size.height - 50);
+    path.lineTo(size.width, 0);*/
+    /*path.lineTo(0, size.height - 50);
+    path.arcToPoint(
+      Offset(size.width, size.height - 50),
+      radius: Radius.circular(200),
+      clockwise: false,
+    );
+    path.lineTo(size.width, 0);*/
 
-      /// Top Left
-      ..arcToPoint(const Offset(20, 0), radius: const Radius.circular(20))
-      ..lineTo((width / 4) + 30, 0)
-      ..arcToPoint(Offset((width / 4) + 45, 10), radius: const Radius.circular(15))
-      ..arcToPoint(Offset((width / 4) + 60, 20), radius: const Radius.circular(15), clockwise: false)
-      ..lineTo((3 * width / 4) - 65, 20)
-      ..arcToPoint(Offset((3 * width / 4) - 45, 10), radius: const Radius.circular(20), clockwise: false)
-      ..arcToPoint(Offset((3 * width / 4) - 25, 0), radius: const Radius.circular(20))
+    path.addOval(Rect.fromCircle(center: const Offset(25, 30), radius: 25));
+    path.addOval(Rect.fromCircle(center: const Offset(65, 30), radius: 25));
+    path.addOval(Rect.fromCircle(center: const Offset(115, 30), radius: 30));
+    path.addOval(Rect.fromCircle(center: const Offset(165, 30), radius: 25));
+    path.addOval(Rect.fromCircle(center: const Offset(205, 30), radius: 25));
 
-      /// Top Right
-      ..lineTo(width - 20, 0)
-      ..arcToPoint(Offset(width, 20), radius: const Radius.circular(20))
-      ..lineTo(width, height - 20)
-      ..arcToPoint(Offset(width - 20, height), radius: const Radius.circular(20))
-
-      /// Bottom Right
-      ..lineTo((3 * width / 4) - 10, height)
-      ..arcToPoint(Offset((3 * width / 4) - 40, height - 20), radius: const Radius.circular(35))
-      ..arcToPoint(Offset((3 * width / 4) - 70, height - 40), radius: const Radius.circular(35), clockwise: false)
-      ..lineTo((width / 4) + 70, height - 40)
-      ..arcToPoint(Offset((width / 4) + 40, height - 20), radius: const Radius.circular(35), clockwise: false)
-      ..arcToPoint(Offset((width / 4) + 10, height - 0), radius: const Radius.circular(35))
-
-      /// Bottom Left
-      ..lineTo(20, height)
-      ..arcToPoint(Offset(0, height - 20), radius: const Radius.circular(20))
-      ..close();
     return path;
   }
 
