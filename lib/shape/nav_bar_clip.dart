@@ -13,7 +13,7 @@ class NavBarClip extends CustomPainter {
 
     final paint3 = Paint()
       ..color = const Color(0xff292929)
-      ..strokeWidth=1
+      ..strokeWidth = 4
       ..style = PaintingStyle.stroke;
 
     final path = Path();
@@ -39,18 +39,17 @@ class NavBarClip extends CustomPainter {
     canvas.drawPath(
         Path()
           ..moveTo(80, 13)
-          ..quadraticBezierTo(
-            87.6, // Control point X
-            13, // Control point Y
-            94, // End point X
-            13, // End point Y
-          )
-          /*..moveTo(80, 13)
-          ..arcToPoint(
-            const Offset(94, 13),
-            radius: const Radius.circular(0.1),
-            clockwise: false,
-          )*/,
+          ..quadraticBezierTo(87.5, 22, 93, 13),
+        paint3);
+    canvas.drawPath(
+        Path()
+          ..moveTo(137, 13)
+          ..quadraticBezierTo(142.5, 22, 150, 13),
+        paint3);
+    canvas.drawPath(
+        Path()
+          ..moveTo(137, 13)
+          ..quadraticBezierTo(142.5, 22, 150, 13),
         paint3);
     //canvas.drawPath(path.shift(const Offset(0, 2)), paint2);
   }
