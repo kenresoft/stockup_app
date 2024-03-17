@@ -24,6 +24,7 @@ class _PortfolioState extends State<Portfolio> {
       child: Scaffold(
         backgroundColor: const Color(0xff121212),
         body: Stack(
+          alignment: Alignment.center, // Center the Stack within Positioned
           children: [
             SingleChildScrollView(
               child: Column(
@@ -202,47 +203,38 @@ class _PortfolioState extends State<Portfolio> {
               bottom: 30,
               width: width,
               height: 100,
-              left: 448 / 4,
+              //left: width / 4,
               child: Stack(
+                alignment: Alignment.center, // Center the Stack within Positioned
                 children: [
                   CustomPaint(
                     painter: NavBarClip(),
                     child: const SizedBox(width: 230, height: 61),
                   ),
-                  Positioned(
-                    top: 17.5,
-                    left: 12.5,
-                    child: GestureDetector(
-                      child: const Icon(Icons.add_home_outlined, color: Colors.white),
-                    ),
-                  ),
-                  Positioned(
-                    top: 17.5,
-                    left: 57.5,
-                    child: GestureDetector(
-                      child: const Icon(Icons.bookmark_border_rounded, color: Colors.white),
-                    ),
-                  ),
-                  Positioned(
-                    top: 17.5,
-                    left: 107.5,
-                    child: GestureDetector(
-                      child: const Icon(Icons.home_repair_service_outlined, color: Colors.white),
-                    ),
-                  ),
-                  Positioned(
-                    top: 17.5,
-                    left: 157.5,
-                    child: GestureDetector(
-                      child: const Icon(Icons.list_alt_rounded, color: Colors.white),
-                    ),
-                  ),
-                  Positioned(
-                    top: 17.5,
-                    left: 203.5,
-                    child: GestureDetector(
-                      child: const Icon(Icons.person_outline_rounded, color: Colors.white),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(width: 10),
+                      GestureDetector(
+                        child: const Icon(Icons.add_home_outlined, color: Colors.white),
+                      ),
+                      const SizedBox(width: 22.5),
+                      GestureDetector(
+                        child: const Icon(Icons.bookmark_border_rounded, color: Colors.white),
+                      ),
+                      const SizedBox(width: 25),
+                      GestureDetector(
+                        child: const Icon(Icons.home_repair_service_outlined, color: Colors.white),
+                      ),
+                      const SizedBox(width: 25),
+                      GestureDetector(
+                        child: const Icon(Icons.list_alt_rounded, color: Colors.white),
+                      ),
+                      const SizedBox(width: 22.5),
+                      GestureDetector(
+                        child: const Icon(Icons.person_outline_rounded, color: Colors.white),
+                      ),
+                    ],
                   ),
                 ],
               ),
