@@ -5,6 +5,7 @@ import 'package:stockup_app/plot/chart.dart';
 import 'package:stockup_app/shape/home_clip_1.dart';
 import 'package:stockup_app/shape/home_clip_2.dart';
 import 'package:stockup_app/shape/portfolio_clip.dart';
+import 'package:stockup_app/shape/portfolio_clip_2.dart';
 import 'package:stockup_app/ui/chain_nav_bar.dart';
 
 class Portfolio extends StatefulWidget {
@@ -83,26 +84,25 @@ class _PortfolioState extends State<Portfolio> {
                         Positioned(
                           width: width,
                           top: (height * .2) / 2,
-                          height: height * .055,
+                          height: height * .052,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 30),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                prefixIcon: const Icon(CupertinoIcons.search, size: 30),
-                                suffixIcon: const Icon(CupertinoIcons.slider_horizontal_3),
-                                hintText: 'Search here..',
-                                filled: true,
-                                contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
-                                fillColor: const Color(0xffB2DDF9),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                  borderSide: const BorderSide(color: Colors.white),
+                            child: Stack(
+                              children: [
+                                CustomPaint(
+                                  painter: const PortfolioClip2(index: 0),
+                                  size: Size(width, height * .052),
                                 ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                  borderSide: const BorderSide(color: Colors.white),
-                                ),
-                              ),
+                               /* Container(
+                                  width: width/2.36,
+                                  alignment: Alignment.centerLeft,
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  child: const Text('Holdings'),
+                                ),*/
+                              ],
                             ),
                           ),
                         ),
