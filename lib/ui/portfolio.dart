@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:stockup_app/plot/chart.dart';
 import 'package:stockup_app/shape/home_clip_1.dart';
 import 'package:stockup_app/shape/home_clip_2.dart';
-import 'package:stockup_app/shape/nav_bar_clip.dart';
 import 'package:stockup_app/shape/portfolio_clip.dart';
+import 'package:stockup_app/ui/chain_nav_bar.dart';
 
 class Portfolio extends StatefulWidget {
   const Portfolio({super.key});
@@ -15,6 +15,7 @@ class Portfolio extends StatefulWidget {
 }
 
 class _PortfolioState extends State<Portfolio> {
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -204,39 +205,13 @@ class _PortfolioState extends State<Portfolio> {
               width: width,
               height: 100,
               //left: width / 4,
-              child: Stack(
-                alignment: Alignment.center, // Center the Stack within Positioned
-                children: [
-                  CustomPaint(
-                    painter: NavBarClip(),
-                    child: const SizedBox(width: 230, height: 61),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(width: 10),
-                      GestureDetector(
-                        child: const Icon(Icons.add_home_outlined, color: Colors.white),
-                      ),
-                      const SizedBox(width: 22.5),
-                      GestureDetector(
-                        child: const Icon(Icons.bookmark_border_rounded, color: Colors.white),
-                      ),
-                      const SizedBox(width: 25),
-                      GestureDetector(
-                        child: const Icon(Icons.home_repair_service_outlined, color: Colors.white),
-                      ),
-                      const SizedBox(width: 25),
-                      GestureDetector(
-                        child: const Icon(Icons.list_alt_rounded, color: Colors.white),
-                      ),
-                      const SizedBox(width: 22.5),
-                      GestureDetector(
-                        child: const Icon(Icons.person_outline_rounded, color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ],
+              child: ChainNavBar(
+                currentIndex: index,
+                onChange: (value) {
+                  setState(() {
+                    index = value;
+                  });
+                },
               ),
             ),
 
