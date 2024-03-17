@@ -213,35 +213,35 @@ class _PortfolioState extends State<Portfolio> {
                     top: 17.5,
                     left: 12.5,
                     child: GestureDetector(
-                      child: const Icon(Icons.home_filled),
+                      child: const Icon(Icons.add_home_outlined, color: Colors.white),
                     ),
                   ),
                   Positioned(
                     top: 17.5,
                     left: 57.5,
                     child: GestureDetector(
-                      child: const Icon(Icons.home_filled),
+                      child: const Icon(Icons.bookmark_border_rounded, color: Colors.white),
                     ),
                   ),
                   Positioned(
                     top: 17.5,
                     left: 107.5,
                     child: GestureDetector(
-                      child: const Icon(Icons.home_filled),
+                      child: const Icon(Icons.home_repair_service_outlined, color: Colors.white),
                     ),
                   ),
                   Positioned(
                     top: 17.5,
                     left: 157.5,
                     child: GestureDetector(
-                      child: const Icon(Icons.home_filled),
+                      child: const Icon(Icons.list_alt_rounded, color: Colors.white),
                     ),
                   ),
                   Positioned(
                     top: 17.5,
                     left: 203.5,
                     child: GestureDetector(
-                      child: const Icon(Icons.home_filled),
+                      child: const Icon(Icons.person_outline_rounded, color: Colors.white),
                     ),
                   ),
                 ],
