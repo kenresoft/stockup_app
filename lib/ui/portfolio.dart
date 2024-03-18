@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stockup_app/plot/chart.dart';
@@ -17,6 +16,7 @@ class Portfolio extends StatefulWidget {
 
 class _PortfolioState extends State<Portfolio> {
   int index = 0;
+  int switchIndex = 0;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -39,7 +39,7 @@ class _PortfolioState extends State<Portfolio> {
                         /// Background
                         Positioned(
                           top: -1,
-                          height: height * .3,
+                          height: height * .23,
                           width: width,
                           child: Container(color: const Color(0xff2B2B2B)),
                         ),
@@ -48,60 +48,59 @@ class _PortfolioState extends State<Portfolio> {
                         Positioned(
                           top: 10,
                           width: width,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 30),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                ClipOval(
-                                  child: CircleAvatar(
-                                    backgroundColor: const Color(0xffAD3B42),
-                                    maxRadius: height * .03,
-                                    child: const Image(
-                                      image: ExactAssetImage('assets/images/profile.jpg'),
-                                      fit: BoxFit.fitHeight,
-                                      height: 60,
-                                      colorBlendMode: BlendMode.multiply,
-                                      color: Color(0xffAD3B42),
-                                    ),
-                                  ),
-                                ),
-                                CircleAvatar(
-                                  backgroundColor: const Color(0xffffffff),
-                                  maxRadius: height * .03,
-                                  child: CircleAvatar(
-                                    backgroundColor: const Color(0xffB2DDF9),
-                                    maxRadius: (height * .03) - 1,
-                                    child: const Icon(CupertinoIcons.bell, size: 28),
-                                  ),
-                                ),
-                              ],
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 25),
+                            child: Text(
+                              'Portfolio',
+                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
                             ),
                           ),
                         ),
 
-                        /// TextField
+                        /// Switch
                         Positioned(
                           width: width,
-                          top: (height * .2) / 2,
+                          top: (height * .2) / 2.6,
                           height: height * .052,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            padding: const EdgeInsets.symmetric(horizontal: 25),
                             child: Stack(
                               children: [
-                                CustomPaint(
-                                  painter: const PortfolioClip2(index: 0),
-                                  size: Size(width, height * .052),
-                                ),
-                               /* Container(
-                                  width: width/2.36,
-                                  alignment: Alignment.centerLeft,
-                                  decoration: BoxDecoration(
-                                    color: Colors.blue,
-                                    borderRadius: BorderRadius.circular(30),
+                                GestureDetector(
+                                  child: CustomPaint(
+                                    painter: PortfolioSwitchClip(currentIndex: switchIndex),
+                                    child: Container(
+                                      width: width,
+                                      height: height * .052,
+                                      alignment: Alignment.center,
+                                      padding: EdgeInsets.symmetric(horizontal: width / 7),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'Holdings',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: switchIndex == 0 ? Colors.black : Colors.white,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Orders',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: switchIndex == 1 ? Colors.black : Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                  child: const Text('Holdings'),
-                                ),*/
+                                  onTapUp: (details) {
+                                    setState(() {
+                                      details.globalPosition.dx < width / 2 ? switchIndex = 0 : switchIndex = 1;
+                                    });
+                                  },
+                                ),
                               ],
                             ),
                           ),
@@ -110,11 +109,88 @@ class _PortfolioState extends State<Portfolio> {
                         /// Dashboard Head
                         Positioned(
                           width: width,
-                          top: height * .2,
-                          left: 5,
-                          height: height * .23,
-                          child: CustomPaint(painter: PortfolioClip()),
+                          top: height * .17,
+                          height: height * .2,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 25),
+                            child: CustomPaint(
+                              painter: PortfolioClip(),
+                              child: Container(
+                                padding: const EdgeInsets.all(20).copyWith(top: 30, bottom: 15),
+                                child: const Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Invested',
+                                          style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xff34414B)),
+                                        ),
+                                        Text(
+                                          'Current',
+                                          style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xff34414B)),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 10),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          '50,560',
+                                          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          '60,112',
+                                          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(vertical: 5),
+                                      child: Divider(thickness: 2, color: Color(0xff658197)),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'P&L',
+                                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                        ),
+                                        Column(
+                                          children: [
+                                            Text(
+                                              '9,552',
+                                              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              '(+18.56%)',
+                                              style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
+                        Positioned.fromRect(
+                          rect: Rect.fromCenter(center: Offset(width / 2, height * .37), width: 105, height: 48),
+                          child: OutlinedButton(
+                            style: const ButtonStyle(
+                              padding: MaterialStatePropertyAll(EdgeInsets.zero),
+                              backgroundColor: MaterialStatePropertyAll(Color(0xff1F1F1F)),
+                              foregroundColor: MaterialStatePropertyAll(Color(0xff83CCFB)),
+                              side: MaterialStatePropertyAll(BorderSide(color: Color(0xff2A2A2A), width: 2)),
+                            ),
+                            onPressed: () {},
+                            child: const Text('Add Money'),
+                          ),
+                        )
                       ],
                     ),
                   ),
