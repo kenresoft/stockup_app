@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class PortfolioClip2 extends CustomPainter {
-  const PortfolioClip2({required this.index});
+class PortfolioSwitchClip extends CustomPainter {
+  const PortfolioSwitchClip({required this.currentIndex});
 
-  final int index;
+  final int currentIndex;
   @override
   void paint(Canvas canvas, Size size) {
     final width = size.width;
@@ -11,7 +11,6 @@ class PortfolioClip2 extends CustomPainter {
 
     final paint = Paint()
       ..color = const Color(0xff414141)
-      //..color = const Color(0xff83CCFB)
       ..strokeWidth = 3
       ..style = PaintingStyle.stroke;
 
@@ -64,7 +63,7 @@ class PortfolioClip2 extends CustomPainter {
         ..color = const Color(0xff333333),
     );
 
-    index == 0
+    currentIndex == 0
         ? canvas.drawPath(
             Path()
               ..moveTo(20, 0)
@@ -72,7 +71,7 @@ class PortfolioClip2 extends CustomPainter {
               ..arcToPoint(Offset((width / 2) - 30, height), radius: const Radius.circular(25))
               ..lineTo(20, height)
               ..arcToPoint(const Offset(20, 0), radius: const Radius.circular(25)),
-            paint..color = Colors.blue,
+            paint..color = const Color(0xff83CCFB),
           )
         : canvas.drawPath(
             Path()
@@ -81,7 +80,7 @@ class PortfolioClip2 extends CustomPainter {
               ..arcToPoint(Offset(width - 20, height), radius: const Radius.circular(25))
               ..lineTo((width / 2) + 30, height)
               ..arcToPoint(Offset((width / 2) + 30, 0), radius: const Radius.circular(25)),
-            paint..color = Colors.lightBlueAccent,
+            paint..color = const Color(0xff83CCFB),
           );
   }
 
