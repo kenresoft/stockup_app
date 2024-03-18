@@ -18,11 +18,11 @@ class NavBarClip extends CustomPainter {
 
     final path = Path();
 
-    path.addOval(Rect.fromCircle(center: const Offset(25, 30), radius: 25));
-    path.addOval(Rect.fromCircle(center: const Offset(70, 30), radius: 25));
-    path.addOval(Rect.fromCircle(center: const Offset(120, 30), radius: 30));
-    path.addOval(Rect.fromCircle(center: const Offset(170, 30), radius: 25));
-    path.addOval(Rect.fromCircle(center: const Offset(215, 30), radius: 25));
+    path.addOval(Rect.fromCircle(center: const Offset(25, 30), radius: 28));
+    path.addOval(Rect.fromCircle(center: const Offset(70, 30), radius: 28));
+    path.addOval(Rect.fromCircle(center: const Offset(125, 30), radius: 35));
+    path.addOval(Rect.fromCircle(center: const Offset(180, 30), radius: 28));
+    path.addOval(Rect.fromCircle(center: const Offset(225, 30), radius: 28));
 
     canvas.drawPath(path, paint);
 
