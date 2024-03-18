@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class PortfolioClip extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final width = size.width - 10;
-    final height = size.height - 10;
+    final width = size.width;
+    final height = size.height;
 
     final paint = Paint()
       //..color = const Color(0xff2B2B2B)
