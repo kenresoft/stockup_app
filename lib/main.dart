@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fontresoft/fontresoft.dart';
-import 'package:stockup_app/ui/funds.dart';
-import 'package:stockup_app/ui/portfolio.dart';
+import 'package:stockup_app/screens/funds.dart';
+import 'package:stockup_app/screens/portfolio.dart';
 
 void main() {
   runApp(const MyApp());
