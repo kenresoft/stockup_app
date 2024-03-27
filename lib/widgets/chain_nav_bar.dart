@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stockup_app/shape/nav_bar_clip.dart';
+
+import '../shapes/nav_bar_clip.dart';
 
 class ChainNavBar extends StatelessWidget {
   const ChainNavBar({
