@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stockup_app/shape/funds_clip.dart';
-import 'package:stockup_app/shape/funds_divider_clip.dart';
+
+import '../shapes/funds_clip.dart';
+import '../shapes/funds_divider_clip.dart';
 
 class Funds extends StatefulWidget {
   const Funds({super.key});
