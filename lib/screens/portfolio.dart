@@ -3,11 +3,8 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stockup_app/plot/chart.dart';
 
 import '../shapes/dotted_line_painter.dart';
-import '../shapes/home_clip_1.dart';
-import '../shapes/home_clip_2.dart';
 import '../shapes/portfolio_clip.dart';
 import '../shapes/portfolio_clip_2.dart';
 import '../widgets/chain_nav_bar.dart';
@@ -243,31 +240,72 @@ class _PortfolioState extends State<Portfolio> {
 
                   /// Portfolio List Body
                   Container(
-                    height: 120,
                     width: width,
-                    margin: const EdgeInsets.symmetric(horizontal: 25),
-                    color: Colors.blue,
+                    margin: const EdgeInsets.symmetric(horizontal: 25).copyWith(top: 10),
+                    //color: Colors.blue,
                     child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               children: [
-                                Icon(Icons.mail_outline),
-                                SizedBox(width: 10),
-                                Text('100'),
-                                Text('Avg. 1650.23')
+                                Icon(Icons.mail_outline, color: Color(0xff7DC3F0)),
+                                SizedBox(width: 6),
+                                Text('100', style: TextStyle(color: Color(0xff7DC3F0))),
+                                SizedBox(width: 6),
+                                Text(
+                                  'Avg. 1650.23',
+                                  style: TextStyle(color: Color(0xff696969)),
+                                ),
                               ],
                             ),
-                            Row(children: [Text('(-2.24%')]),
+                            Text(
+                              '(-2.24%)',
+                              style: TextStyle(color: Color(0xff963B3B)),
+                            ),
                           ],
                         ),
                         Row(
-                          children: [Text('HDFCBANK')],
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'HDFCBANK',
+                              style: TextStyle(color: Color(0xffffffff)),
+                            ),
+                            Text(
+                              '-40.16',
+                              style: TextStyle(color: Color(0xffB94646), fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                         Row(
-                          children: [],
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Invested 16,502',
+                              style: TextStyle(color: Color(0xff696969)),
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  'LTP',
+                                  style: TextStyle(color: Color(0xff696969)),
+                                ),
+                                SizedBox(width: 6),
+                                Text(
+                                  '1601.65',
+                                  style: TextStyle(color: Color(0xff696969), fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(width: 6),
+                                Text(
+                                  '(-2.24%)',
+                                  style: TextStyle(color: Color(0xff963B3B)),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -291,215 +329,17 @@ class _PortfolioState extends State<Portfolio> {
                 },
               ),
             ),
-
-            /*Positioned(
-              bottom: 30,
-              width: width,
-              height: 100,
-              left: 448 / 4,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  buildNavIcon(0, CupertinoIcons.house_alt),
-                  buildNavIcon(40, CupertinoIcons.bookmark),
-                  buildNavIcon(140, CupertinoIcons.square_list),
-                  buildNavIcon(180, CupertinoIcons.person),
-                  Positioned(
-                    bottom: 20,
-                    height: 70,
-                    width: 70,
-                    left: 80,
-                    child: Card(
-                      color: const Color(0xff202020),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
-                      elevation: 0,
-                      shadowColor: Colors.grey,
-                      margin: EdgeInsets.zero,
-                      surfaceTintColor: const Color(0xff202020),
-                      */ /* decoration: BoxDecoration(
-                        color: const Color(0xff202020),
-                        borderRadius: BorderRadius.circular(35),
-                        boxShadow: const [
-                          BoxShadow(offset: Offset(0, -1), spreadRadius: 0, blurRadius: 1, color: Colors.grey),
-                        ],
-                      )*/ /*
-                      child: Container(
-                        margin: const EdgeInsets.all(3),
-                        decoration: BoxDecoration(color: const Color(0xff85CFFF), borderRadius: BorderRadius.circular(35)),
-                        child: const Icon(
-                          CupertinoIcons.bag,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),*/
           ],
         ),
       ),
     );
   }
 
-  Widget buildNavIcon(double position, IconData iconData) {
-    return Positioned(
-      bottom: 30,
-      height: 50,
-      width: 50,
-      left: position,
-      child: Card(
-        color: const Color(0xff202020),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
-        elevation: 0,
-        shadowColor: Colors.grey,
-        margin: EdgeInsets.zero,
-        surfaceTintColor: const Color(0xff202020),
-        child: Icon(
-          iconData,
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-
-  Container buildBoardB(BuildContext context, String text1, String text2, String text3) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    debugPrint(height.toString());
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 15, vertical: height * 0.014),
-      height: height * .18,
-      child: Stack(
-        children: [
-          CustomPaint(
-            size: Size(width * 0.38, height * 0.123),
-            painter: const HomeClip2(Color(0xff1A1A1A)),
-          ),
-          const Positioned(
-            top: 0,
-            child: ClipOval(
-              child: CircleAvatar(
-                child: Image(
-                  image: ExactAssetImage('assets/images/profile.jpg'),
-                  fit: BoxFit.fitHeight,
-                  height: 60,
-                  colorBlendMode: BlendMode.multiply,
-                  color: Color(0xffaaaaaa),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 45,
-            height: 90,
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(text1, style: const TextStyle(color: Colors.white)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32),
-                    child: Text(text2, style: const TextStyle(color: Colors.white, fontSize: 18)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32),
-                    child: Text(text3, style: TextStyle(color: text3.contains('-') ? Colors.red : Colors.green)),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildBoardA(BuildContext context, Color bgColor, Color textColor, (String, String, String) text) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    return CustomPaint(
-      //size: Size.fromWidth(width * 0.48),
-      size: Size((width * 0.48).log, (height * .23).log),
-      painter: HomeClip1(bgColor),
-      child: SizedBox(
-        width: width * .47,
-        height: height * .23,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: height * .015),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-              child: Text('NIFTY 50', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-              child: Text(
-                '18,755.45',
-                style: TextStyle(fontSize: 23, fontWeight: FontWeight.w700),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-              child: Text(
-                '+70.5 (0.37%)',
-                style: TextStyle(fontSize: 15, color: textColor, fontWeight: FontWeight.w600),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 26, left: 20),
-              child: LinePlot(height: height * .09, color: textColor),
-            ),
-            //const SizedBox(height: 30),
-          ],
-        ),
-      ),
-    );
-  }
 }
 
 extension Log<T> on T {
   T get log {
     debugPrint(toString());
     return this;
-  }
-}
-
-class BoardClip extends CustomClipper<Path> {
-  @override
-  getClip(Size size) {
-    final width = size.width;
-    final height = size.height;
-
-    var path = Path();
-    /*path.lineTo(0, size.height - 50);
-    path.quadraticBezierTo(size.width / 2, size.height, size.width, size.height - 50);
-    path.lineTo(size.width, 0);*/
-    /*path.lineTo(0, size.height - 50);
-    path.arcToPoint(
-      Offset(size.width, size.height - 50),
-      radius: Radius.circular(200),
-      clockwise: false,
-    );
-    path.lineTo(size.width, 0);*/
-
-    path.addOval(Rect.fromCircle(center: const Offset(25, 30), radius: 25));
-    path.addOval(Rect.fromCircle(center: const Offset(65, 30), radius: 25));
-    path.addOval(Rect.fromCircle(center: const Offset(115, 30), radius: 30));
-    path.addOval(Rect.fromCircle(center: const Offset(165, 30), radius: 25));
-    path.addOval(Rect.fromCircle(center: const Offset(205, 30), radius: 25));
-
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper oldClipper) {
-    return false;
   }
 }
