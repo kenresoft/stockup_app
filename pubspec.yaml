@@ -14,6 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.6
   fontresoft: ^0.0.5
+  extensionresoft: ^0.0.5
   fl_chart: ^0.66.2
   flutter_svg: ^2.0.10+1
 
