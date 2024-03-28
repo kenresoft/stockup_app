@@ -3,11 +3,13 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:stockup_app/widgets/portfolio_list_tile.dart';
 
+import '../models/watchlist.dart';
 import '../shapes/dotted_line_painter.dart';
 import '../shapes/portfolio_clip.dart';
 import '../shapes/portfolio_clip_2.dart';
-import '../widgets/chain_nav_bar.dart';
+import '../widgets/custom_bottom_navigation_bar.dart';
 
 class Portfolio extends StatefulWidget {
   const Portfolio({super.key});
@@ -17,8 +19,36 @@ class Portfolio extends StatefulWidget {
 }
 
 class _PortfolioState extends State<Portfolio> {
-  int index = 0;
+  int index = 4;
   int switchIndex = 0;
+
+  final watchList = <Watchlist>[
+    Watchlist(
+      (100, 1650.23, -2.24),
+      ('HDFCBANK', -40.16),
+      (16502, 1601.65, -2.24),
+    ),
+    Watchlist(
+      (2, 16250.46, 13.35),
+      ('INF', 499.65),
+      (2500.56, 1370.35, 2.24),
+    ),
+    Watchlist(
+      (100, 157.75, 10.35),
+      ('INF', 1500.65),
+      (15775, 170.35, 2.24),
+    ),
+    Watchlist(
+      (5, 2463.98, 12.96),
+      ('BALKRISND', 1365.65),
+      (2400, 1601.65, -2.24),
+    ),
+    Watchlist(
+      (10, 776.70, -23.36),
+      ('JUSTDIAL', -586.12),
+      (1000, 47.22, -0.94),
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -239,75 +269,28 @@ class _PortfolioState extends State<Portfolio> {
                   ),*/
 
                   /// Portfolio List Body
-                  Container(
-                    width: width,
-                    margin: const EdgeInsets.symmetric(horizontal: 25).copyWith(top: 10),
-                    //color: Colors.blue,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Icon(Icons.mail_outline, color: Color(0xff7DC3F0)),
-                                SizedBox(width: 6),
-                                Text('100', style: TextStyle(color: Color(0xff7DC3F0))),
-                                SizedBox(width: 6),
-                                Text(
-                                  'Avg. 1650.23',
-                                  style: TextStyle(color: Color(0xff696969)),
-                                ),
-                              ],
-                            ),
-                            Text(
-                              '(-2.24%)',
-                              style: TextStyle(color: Color(0xff963B3B)),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'HDFCBANK',
-                              style: TextStyle(color: Color(0xffffffff)),
-                            ),
-                            Text(
-                              '-40.16',
-                              style: TextStyle(color: Color(0xffB94646), fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Invested 16,502',
-                              style: TextStyle(color: Color(0xff696969)),
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  'LTP',
-                                  style: TextStyle(color: Color(0xff696969)),
-                                ),
-                                SizedBox(width: 6),
-                                Text(
-                                  '1601.65',
-                                  style: TextStyle(color: Color(0xff696969), fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(width: 6),
-                                Text(
-                                  '(-2.24%)',
-                                  style: TextStyle(color: Color(0xff963B3B)),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
+                  SizedBox(
+                    height: 500,
+                    child: ListView.separated(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return PortfolioListTile(
+                          width: width,
+                          index: index,
+                          watchList: watchList,
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return Container(
+                          width: width,
+                          height: 2,
+                          decoration: const BoxDecoration(
+                            gradient: RadialGradient(colors: [Color(0xff383838), Colors.transparent], radius: 160),
+                          ),
+                        );
+                      },
+                      itemCount: 5,
                     ),
                   ),
                 ],
@@ -315,31 +298,10 @@ class _PortfolioState extends State<Portfolio> {
             ),
 
             /// Bottom Nav
-            Positioned(
-              bottom: 30,
-              width: width,
-              height: 100,
-              //left: width / 4,
-              child: ChainNavBar(
-                currentIndex: index,
-                onChange: (value) {
-                  setState(() {
-                    index = value;
-                  });
-                },
-              ),
-            ),
+            CustomBottomNavigationBar(width: width, index: index),
           ],
         ),
       ),
     );
-  }
-
-}
-
-extension Log<T> on T {
-  T get log {
-    debugPrint(toString());
-    return this;
   }
 }
