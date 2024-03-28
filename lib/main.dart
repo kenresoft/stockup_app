@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fontresoft/fontresoft.dart';
 import 'package:stockup_app/screens/funds.dart';
+import 'package:stockup_app/screens/home.dart';
+import 'package:stockup_app/screens/m_pin.dart';
 import 'package:stockup_app/screens/portfolio.dart';
 
 void main() {
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'StockUp Mobile',
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
@@ -25,10 +27,10 @@ class MyApp extends StatelessWidget {
         splashColor: Colors.transparent,
       ),
       routes: {
-        //'/': (context) => const Home(),
-        '/': (context) => const Portfolio(),
+        '/': (context) => const Home(),
         '/funds': (context) => const Funds(),
         '/portfolio': (context) => const Portfolio(),
+        '/mpin': (context) => const MPin(),
       },
     );
   }
