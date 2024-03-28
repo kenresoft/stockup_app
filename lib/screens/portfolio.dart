@@ -1,11 +1,16 @@
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stockup_app/plot/chart.dart';
-import 'package:stockup_app/shape/home_clip_1.dart';
-import 'package:stockup_app/shape/home_clip_2.dart';
-import 'package:stockup_app/shape/portfolio_clip.dart';
-import 'package:stockup_app/shape/portfolio_clip_2.dart';
-import 'package:stockup_app/ui/chain_nav_bar.dart';
+
+import '../shapes/dotted_line_painter.dart';
+import '../shapes/home_clip_1.dart';
+import '../shapes/home_clip_2.dart';
+import '../shapes/portfolio_clip.dart';
+import '../shapes/portfolio_clip_2.dart';
+import '../widgets/chain_nav_bar.dart';
 
 class Portfolio extends StatefulWidget {
   const Portfolio({super.key});
@@ -26,6 +31,7 @@ class _PortfolioState extends State<Portfolio> {
       child: Scaffold(
         backgroundColor: const Color(0xff121212),
         body: Stack(
+          fit: StackFit.expand,
           alignment: Alignment.center, // Center the Stack within Positioned
           children: [
             SingleChildScrollView(
@@ -33,7 +39,7 @@ class _PortfolioState extends State<Portfolio> {
                 children: [
                   Container(color: const Color(0xff2B2B2B), height: height * .05),
                   SizedBox(
-                    height: height * .45,
+                    height: height * .396,
                     child: Stack(
                       children: [
                         /// Background
@@ -195,80 +201,75 @@ class _PortfolioState extends State<Portfolio> {
                     ),
                   ),
 
-                  /// Dashboard Body
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('TOP GAINERS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
-                        Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
-                      child: Row(
-                        children: [
-                          buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86 (5.71%)'),
-                          buildBoardB(context, 'WIPRO', '383.35', '+ 24.56 (5.11%)'),
-                          buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86 (5.71%)'),
-                          buildBoardB(context, 'WIPRO', '383.35', '+ 24.56 (5.11%)'),
-                        ],
+                  Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Column(
+                          children: [
+                            const DottedLineWidget(),
+                            const SizedBox(height: 45),
+                            Transform(transform: Matrix4.identity()..rotateX(pi), child: const DottedLineWidget()),
+                          ],
+                        ),
                       ),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('TOP LOOSERS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
-                        Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
-                      child: Row(
-                        children: [
-                          buildBoardB(context, 'BAJAJ FINSERY', '1,510.96', '- 15.56 (0.23%)'),
-                          buildBoardB(context, 'EXIDE IND.', '220.50', '- 13.76 (0.4%)'),
-                          buildBoardB(context, 'BAJAJ FINSERY', '1,510.96', '- 15.56 (0.23%)'),
-                          buildBoardB(context, 'EXIDE IND.', '220.50', '- 13.76 (0.4%)'),
-                        ],
+                      Container(
+                        height: 55,
+                        margin: const EdgeInsets.symmetric(horizontal: 25),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(CupertinoIcons.search, color: Colors.white),
+                            Row(
+                              children: [
+                                Icon(CupertinoIcons.slider_horizontal_3, color: Colors.white),
+                                SizedBox(width: 20),
+                                Icon(CupertinoIcons.chart_pie, color: Colors.white),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  /*SizedBox(
+                    width: width,
+                    height: 20,
+                    child: SvgPicture.asset(
+                      'assets/images/line.svg',
+                      colorFilter: const ColorFilter.mode(Colors.white, BlendMode.color),
+                    ),
+                  ),*/
+
+                  /// Portfolio List Body
+                  Container(
+                    height: 120,
+                    width: width,
+                    margin: const EdgeInsets.symmetric(horizontal: 25),
+                    color: Colors.blue,
+                    child: const Column(
                       children: [
-                        Text('STOCK IN NEWS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
-                        Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(Icons.mail_outline),
+                                SizedBox(width: 10),
+                                Text('100'),
+                                Text('Avg. 1650.23')
+                              ],
+                            ),
+                            Row(children: [Text('(-2.24%')]),
+                          ],
+                        ),
+                        Row(
+                          children: [Text('HDFCBANK')],
+                        ),
+                        Row(
+                          children: [],
+                        ),
                       ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
-                      child: Row(
-                        children: [
-                          buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
-                          buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
-                          buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
-                          buildBoardB(context, 'TATA MOTORS', '564.30', '+ 6.86'),
-                        ],
-                      ),
                     ),
                   ),
                 ],
