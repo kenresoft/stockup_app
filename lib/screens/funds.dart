@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../models/transaction.dart';
+import '../shapes/dotted_line_painter.dart';
 import '../shapes/funds_clip.dart';
-import '../shapes/funds_divider_clip.dart';
 
 class Funds extends StatefulWidget {
   const Funds({super.key});
@@ -17,7 +20,6 @@ class _FundsState extends State<Funds> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      //appBar: AppBar(backgroundColor: const Color(0xff84CEFE), toolbarHeight: 0, scrolledUnderElevation: 0),
       backgroundColor: const Color(0xff121212),
       body: SingleChildScrollView(
         child: Column(
@@ -42,12 +44,12 @@ class _FundsState extends State<Funds> {
                   Positioned(
                     top: 10,
                     width: width,
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Row(
                         children: [
-                          Icon(CupertinoIcons.arrow_left),
-                          Padding(
+                          InkWell(onTap: () => Navigator.pop(context), child: const Icon(CupertinoIcons.arrow_left)),
+                          const Padding(
                             padding: EdgeInsets.symmetric(horizontal: 25),
                             child: Text('Funds', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                           ),
@@ -56,7 +58,7 @@ class _FundsState extends State<Funds> {
                     ),
                   ),
 
-                  /// TextField
+                  /// Header
                   Positioned(
                     width: width,
                     top: (height * .2) / 2,
@@ -64,7 +66,7 @@ class _FundsState extends State<Funds> {
                       padding: EdgeInsets.symmetric(horizontal: 30),
                       child: Column(
                         children: [
-                          Text('Total Available Balance'),
+                          Text('Total available balance', style: TextStyle(color: Color(0xff415663))),
                           Text('10,245.00', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
                         ],
                       ),
@@ -79,8 +81,21 @@ class _FundsState extends State<Funds> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        buildBoardA(width, height, const Color(0xff9CECAE), CupertinoIcons.bag_badge_plus),
-                        buildBoardA(width, height, const Color(0xffECB39C), CupertinoIcons.arrow_down_doc),
+                        buildBoardA(
+                          width,
+                          height,
+                          const Color(0xff9CECAE),
+                          CupertinoIcons.bag_badge_plus,
+                        ),
+                        GestureDetector(
+                          onTap: () => Navigator.pushNamed(context, '/withdraw'),
+                          child: buildBoardA(
+                            width,
+                            height,
+                            const Color(0xffECB39C),
+                            CupertinoIcons.arrow_down_doc,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -102,21 +117,21 @@ class _FundsState extends State<Funds> {
             const SizedBox(height: 20),
 
             Container(
-              height: 15,
               width: width,
-              margin: const EdgeInsets.symmetric(horizontal: 30),
-              child: CustomPaint(painter: FundsDividerClip()),
+              margin: const EdgeInsets.symmetric(horizontal: 30).copyWith(top: 15),
+              child: Transform(transform: Matrix4.identity()..rotateX(pi), child: const DottedLineWidget()),
+              //child: CustomPaint(painter: FundsDividerClip()),
             ),
 
             /// Dashboard Body
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 21),
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'Recent Transactions',
-                    style: TextStyle(color: Color(0xffCFCFCF), fontWeight: FontWeight.bold, fontSize: 16),
+                    style: TextStyle(color: Color(0xffBBBBBB), fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   Icon(
                     Icons.calendar_today_outlined,
@@ -144,7 +159,7 @@ class _FundsState extends State<Funds> {
                     ),
                     title: Text(
                       transactions[index].amount.contains('+') ? 'Add Money' : 'Withdraw Money',
-                      style: const TextStyle(color: Color(0xffcccccc), fontSize: 14, fontWeight: FontWeight.w800),
+                      style: const TextStyle(color: Color(0xffBBBBBB), fontSize: 14, fontWeight: FontWeight.w800),
                     ),
                     subtitle: Text(
                       transactions[index].date,
@@ -154,7 +169,7 @@ class _FundsState extends State<Funds> {
                       transactions[index].amount,
                       style: TextStyle(
                         fontSize: 16,
-                        color: transactions[index].amount.contains('+') ? const Color(0xff9CECAE) : const Color(0xffECB39C),
+                        color: transactions[index].amount.contains('+') ? const Color(0xff9CECAE) : const Color(0xffD64F4F),
                       ),
                     ),
                   );
@@ -189,18 +204,4 @@ class _FundsState extends State<Funds> {
     Transaction('07 April, 2023', '+ 1,000'),
     Transaction('03 March, 2023', '- 9,000'),
   ];
-}
-
-extension Log<T> on T {
-  T get log {
-    debugPrint(toString());
-    return this;
-  }
-}
-
-class Transaction {
-  Transaction(this.date, this.amount);
-
-  final String date;
-  final String amount;
 }
