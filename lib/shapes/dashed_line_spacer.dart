@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DottedLinePainter extends CustomPainter {
+class DashedLinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
@@ -66,14 +66,14 @@ class DottedLinePainter extends CustomPainter {
   }
 }
 
-class DottedLineWidget extends StatelessWidget {
-  const DottedLineWidget({super.key});
+class DashedLine extends StatelessWidget {
+  const DashedLine({super.key});
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: DottedLinePainter(),
-      size: Size(MediaQuery.of(context).size.width - 50, 10),
+      painter: DashedLinePainter(),
+      //size: Size(MediaQuery.of(context).size.width - 50, 10),
     );
   }
 }
