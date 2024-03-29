@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:stockup_app/widgets/portfolio_list_tile.dart';
 
 import '../models/watchlist.dart';
-import '../shapes/dotted_line_painter.dart';
+import '../shapes/dashed_line_spacer.dart';
 import '../shapes/portfolio_clip.dart';
 import '../shapes/portfolio_clip_2.dart';
 import '../widgets/custom_bottom_navigation_bar.dart';
@@ -234,9 +234,9 @@ class _PortfolioState extends State<Portfolio> {
                         alignment: Alignment.center,
                         child: Column(
                           children: [
-                            const DottedLineWidget(),
+                            const DashedLineSpacer(),
                             const SizedBox(height: 45),
-                            Transform(transform: Matrix4.identity()..rotateX(pi), child: const DottedLineWidget()),
+                            Transform(transform: Matrix4.identity()..rotateX(pi), child: const DashedLineSpacer()),
                           ],
                         ),
                       ),
