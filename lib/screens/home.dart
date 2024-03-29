@@ -4,6 +4,7 @@ import 'package:stockup_app/plot/chart.dart';
 
 import '../shapes/home_clip_1.dart';
 import '../shapes/home_clip_2.dart';
+import '../widgets/custom_bottom_navigation_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,12 +14,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      //appBar: AppBar(backgroundColor: const Color(0xff84CEFE), toolbarHeight: 0, scrolledUnderElevation: 0),
       backgroundColor: const Color(0xff121212),
       body: Stack(
         children: [
@@ -66,13 +67,16 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                               ),
-                              CircleAvatar(
-                                backgroundColor: const Color(0xffffffff),
-                                maxRadius: height * .03,
+                              GestureDetector(
+                                onTap: () => Navigator.pushNamed(context, '/invite'),
                                 child: CircleAvatar(
-                                  backgroundColor: const Color(0xffB2DDF9),
-                                  maxRadius: (height * .03) - 1,
-                                  child: const Icon(CupertinoIcons.bell, size: 28),
+                                  backgroundColor: const Color(0xffffffff),
+                                  maxRadius: height * .03,
+                                  child: CircleAvatar(
+                                    backgroundColor: const Color(0xffB2DDF9),
+                                    maxRadius: (height * .03) - 1,
+                                    child: const Icon(CupertinoIcons.bell, size: 28),
+                                  ),
                                 ),
                               ),
                             ],
@@ -222,72 +226,8 @@ class _HomeState extends State<Home> {
           ),
 
           /// Bottom Nav
-          Positioned(
-            bottom: 30,
-            width: width,
-            height: 100,
-            left: width / 4,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                buildNavIcon(0, CupertinoIcons.house_alt),
-                buildNavIcon(40, CupertinoIcons.bookmark),
-                buildNavIcon(140, CupertinoIcons.square_list),
-                buildNavIcon(180, CupertinoIcons.person),
-                Positioned(
-                  bottom: 20,
-                  height: 70,
-                  width: 70,
-                  left: 80,
-                  child: Card(
-                    color: const Color(0xff202020),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
-                    elevation: 0,
-                    shadowColor: Colors.grey,
-                    margin: EdgeInsets.zero,
-                    surfaceTintColor: const Color(0xff202020),
-                    /* decoration: BoxDecoration(
-                      color: const Color(0xff202020),
-                      borderRadius: BorderRadius.circular(35),
-                      boxShadow: const [
-                        BoxShadow(offset: Offset(0, -1), spreadRadius: 0, blurRadius: 1, color: Colors.grey),
-                      ],
-                    )*/
-                    child: Container(
-                      margin: const EdgeInsets.all(3),
-                      decoration: BoxDecoration(color: const Color(0xff85CFFF), borderRadius: BorderRadius.circular(35)),
-                      child: const Icon(
-                        CupertinoIcons.bag,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          CustomBottomNavigationBar(width: width, index: index),
         ],
-      ),
-    );
-  }
-
-  Widget buildNavIcon(double position, IconData iconData) {
-    return Positioned(
-      bottom: 30,
-      height: 50,
-      width: 50,
-      left: position,
-      child: Card(
-        color: const Color(0xff202020),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
-        elevation: 0,
-        shadowColor: Colors.grey,
-        margin: EdgeInsets.zero,
-        surfaceTintColor: const Color(0xff202020),
-        child: Icon(
-          iconData,
-          color: Colors.white,
-        ),
       ),
     );
   }
@@ -314,7 +254,7 @@ class _HomeState extends State<Home> {
                   fit: BoxFit.fitHeight,
                   height: 60,
                   colorBlendMode: BlendMode.multiply,
-                  color: Color(0xffaaaaaa),
+                  color: Color(0xffAAAAAA),
                 ),
               ),
             ),
@@ -354,7 +294,7 @@ class _HomeState extends State<Home> {
     double height = MediaQuery.of(context).size.height;
     return CustomPaint(
       //size: Size.fromWidth(width * 0.48),
-      size: Size((width * 0.48).log, (height * .23).log),
+      size: Size((width * 0.48), (height * .23)),
       painter: HomeClip1(bgColor),
       child: SizedBox(
         width: width * .47,
@@ -390,12 +330,5 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
-  }
-}
-
-extension Log<T> on T {
-  T get log {
-    debugPrint(toString());
-    return this;
   }
 }
