@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:fontresoft/fontresoft.dart';
 import 'package:stockup_app/screens/funds.dart';
 import 'package:stockup_app/screens/home.dart';
+import 'package:stockup_app/screens/invite.dart';
 import 'package:stockup_app/screens/m_pin.dart';
 import 'package:stockup_app/screens/portfolio.dart';
+import 'package:stockup_app/screens/withdraw.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +33,8 @@ class MyApp extends StatelessWidget {
         '/funds': (context) => const Funds(),
         '/portfolio': (context) => const Portfolio(),
         '/mpin': (context) => const MPin(),
+        '/withdraw': (context) => const Withdraw(),
+        '/invite': (context) => const Invite(),
       },
     );
   }
