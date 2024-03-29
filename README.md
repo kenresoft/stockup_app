@@ -13,6 +13,9 @@ with the tools and insights you need to make informed decisions and maximize you
 
 Design by: [MindInventory UI/UX ](https://dribbble.com/shots/23712740-Stockup-Stock-Market-App) on Dribble.
 
+<img src="https://www.transparentpng.com/thumb/networking/networking-vector-6.png" alt="networking vector @transparentpng.com">
+<a href="https://www.transparentpng.com/details/networking-vector_8406.html" target="_blank">networking vector @transparentpng.com</a>
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
