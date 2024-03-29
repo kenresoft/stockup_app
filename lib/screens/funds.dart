@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../models/transaction.dart';
-import '../shapes/dotted_line_painter.dart';
+import '../shapes/dashed_line_spacer.dart';
 import '../shapes/funds_clip.dart';
 
 class Funds extends StatefulWidget {
@@ -119,7 +119,7 @@ class _FundsState extends State<Funds> {
             Container(
               width: width,
               margin: const EdgeInsets.symmetric(horizontal: 30).copyWith(top: 15),
-              child: Transform(transform: Matrix4.identity()..rotateX(pi), child: const DottedLineWidget()),
+              child: Transform(transform: Matrix4.identity()..rotateX(pi), child: const DashedLineSpacer()),
               //child: CustomPaint(painter: FundsDividerClip()),
             ),
 
