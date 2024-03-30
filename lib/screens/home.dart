@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stockup_app/plot/chart.dart';
 
 import '../shapes/home_clip_1.dart';
@@ -28,16 +29,16 @@ class _HomeState extends State<Home> {
               children: [
                 Container(
                   color: const Color(0xff84CEFE),
-                  height: height * .05,
+                  height: 50.h,
                 ),
                 SizedBox(
-                  height: height * .45,
+                  height: 450.h,
                   child: Stack(
                     children: [
                       /// Background
                       Positioned(
                         top: 0,
-                        height: height * .3,
+                        height: 300.h,
                         width: width,
                         child: Container(
                           color: const Color(0xff84CEFE),
@@ -47,23 +48,23 @@ class _HomeState extends State<Home> {
 
                       /// Toolbar
                       Positioned(
-                        top: 10,
+                        top: 10.h,
                         width: width,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          padding: const EdgeInsets.symmetric(horizontal: 30).w,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               ClipOval(
                                 child: CircleAvatar(
                                   backgroundColor: const Color(0xffAD3B42),
-                                  maxRadius: height * .03,
-                                  child: const Image(
-                                    image: ExactAssetImage('assets/images/profile.jpg'),
+                                  maxRadius: 30.h,
+                                  child: Image(
+                                    image: const ExactAssetImage('assets/images/profile.jpg'),
                                     fit: BoxFit.fitHeight,
-                                    height: 60,
+                                    height: 60.h,
                                     colorBlendMode: BlendMode.multiply,
-                                    color: Color(0xffAD3B42),
+                                    color: const Color(0xffAD3B42),
                                   ),
                                 ),
                               ),
@@ -71,10 +72,10 @@ class _HomeState extends State<Home> {
                                 onTap: () => Navigator.pushNamed(context, '/invite'),
                                 child: CircleAvatar(
                                   backgroundColor: const Color(0xffffffff),
-                                  maxRadius: height * .03,
+                                  maxRadius: 30.h,
                                   child: CircleAvatar(
                                     backgroundColor: const Color(0xffB2DDF9),
-                                    maxRadius: (height * .03) - 1,
+                                    maxRadius: 28.h,
                                     child: const Icon(CupertinoIcons.bell, size: 28),
                                   ),
                                 ),
@@ -87,24 +88,24 @@ class _HomeState extends State<Home> {
                       /// TextField
                       Positioned(
                         width: width,
-                        top: (height * .2) / 2,
-                        height: height * .055,
+                        top: 100.h,
+                        height: 55.h,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          padding: const EdgeInsets.symmetric(horizontal: 30).w,
                           child: TextField(
                             decoration: InputDecoration(
-                              prefixIcon: const Icon(CupertinoIcons.search, size: 30),
+                              prefixIcon: Icon(CupertinoIcons.search, size: 30.h),
                               suffixIcon: const Icon(CupertinoIcons.slider_horizontal_3),
                               hintText: 'Search here..',
                               filled: true,
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
+                              contentPadding: EdgeInsets.symmetric(horizontal: 15.w).copyWith(top: 30.h),
                               fillColor: const Color(0xffB2DDF9),
                               enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(50.r),
                                 borderSide: const BorderSide(color: Colors.white),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(50.r),
                                 borderSide: const BorderSide(color: Colors.white),
                               ),
                             ),
@@ -115,9 +116,9 @@ class _HomeState extends State<Home> {
                       /// Dashboard Head
                       Positioned(
                         width: width + 50,
-                        top: height * .2,
+                        top: 200.h,
                         // right: 5,
-                        height: height * .23,
+                        height: 230.h,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 0 /*30*/),
                           child: Row(
@@ -146,18 +147,18 @@ class _HomeState extends State<Home> {
                 ),
 
                 /// Dashboard Body
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30).w,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('TOP GAINERS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
-                      Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16)),
+                      Text('TOP GAINERS', style: TextStyle(color: const Color(0xffCFCFCF), fontSize: 18.h)),
+                      Text('See all', style: TextStyle(color: const Color(0xff898989), fontSize: 16.h)),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 15).w,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
@@ -171,9 +172,9 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30).w,
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('TOP LOOSERS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
@@ -182,7 +183,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 15).w,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
@@ -196,9 +197,9 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30).w,
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('STOCK IN NEWS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18)),
@@ -207,7 +208,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 15).w,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast),
@@ -234,34 +235,34 @@ class _HomeState extends State<Home> {
 
   Container buildBoardB(BuildContext context, String text1, String text2, String text3) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    debugPrint(height.toString());
+    //double height = MediaQuery.of(context).size.height;
+    //debugPrint(height.toString());
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 15, vertical: height * 0.014),
-      height: height * .18,
+      margin: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
+      height: 180.h,
       child: Stack(
         children: [
           CustomPaint(
-            size: Size(width * 0.38, height * 0.123),
+            size: Size(171.w, 123.h),
             painter: const HomeClip2(Color(0xff1A1A1A)),
           ),
-          const Positioned(
+           Positioned(
             top: 0,
             child: ClipOval(
               child: CircleAvatar(
                 child: Image(
-                  image: ExactAssetImage('assets/images/profile.jpg'),
+                  image: const ExactAssetImage('assets/images/profile.jpg'),
                   fit: BoxFit.fitHeight,
-                  height: 60,
+                  height: 60.h,
                   colorBlendMode: BlendMode.multiply,
-                  color: Color(0xffAAAAAA),
+                  color: const Color(0xffAAAAAA),
                 ),
               ),
             ),
           ),
           Positioned(
-            top: 45,
-            height: 90,
+            top: 56.h,
+            height: 90.h,
             child: Center(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -269,15 +270,15 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 16).w,
                     child: Text(text1, style: const TextStyle(color: Colors.white)),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32),
-                    child: Text(text2, style: const TextStyle(color: Colors.white, fontSize: 18)),
+                    padding: const EdgeInsets.symmetric(horizontal: 32).w,
+                    child: Text(text2, style: TextStyle(color: Colors.white, fontSize: 18.h)),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32),
+                    padding: const EdgeInsets.symmetric(horizontal: 32).w,
                     child: Text(text3, style: TextStyle(color: text3.contains('-') ? Colors.red : Colors.green)),
                   ),
                 ],
@@ -290,40 +291,40 @@ class _HomeState extends State<Home> {
   }
 
   Widget buildBoardA(BuildContext context, Color bgColor, Color textColor, (String, String, String) text) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    return CustomPaint(
-      //size: Size.fromWidth(width * 0.48),
-      size: Size((width * 0.48), (height * .23)),
-      painter: HomeClip1(bgColor),
-      child: SizedBox(
-        width: width * .47,
-        height: height * .23,
+    //double width = MediaQuery.of(context).size.width;
+    //double height = MediaQuery.of(context).size.height;
+    return SizedBox(
+      width: 210.w,
+      height: 330.h,
+      //height: (height * .23).h,
+      child: CustomPaint(
+        //size: Size((width * 0.48).w, (height * .23)),
+        painter: HomeClip1(bgColor),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: height * .015),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-              child: Text('NIFTY 50', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+            SizedBox(height: 15.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
+              child: Text('NIFTY 50', style: TextStyle(fontSize: 18.h, fontWeight: FontWeight.w500)),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
               child: Text(
                 '18,755.45',
-                style: TextStyle(fontSize: 23, fontWeight: FontWeight.w700),
+                style: TextStyle(fontSize: 23.h, fontWeight: FontWeight.w700),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 0),
               child: Text(
                 '+70.5 (0.37%)',
-                style: TextStyle(fontSize: 15, color: textColor, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 15.h, color: textColor, fontWeight: FontWeight.w600),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 26, left: 20),
-              child: LinePlot(height: height * .09, color: textColor),
+              padding: EdgeInsets.only(right: 26.w, left: 20.w),
+              child: LinePlot(height: 90.h, color: textColor),
             ),
             //const SizedBox(height: 30),
           ],
