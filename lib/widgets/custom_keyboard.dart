@@ -1,6 +1,7 @@
 import 'package:extensionresoft/extensionresoft.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomKeyboard extends StatefulWidget {
   final Function(String) onKeyPressed;
@@ -17,18 +18,18 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
-    var color = Colors.red;
     return Container(
-      height: 333,
+      height: 333.h,
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.symmetric(horizontal: width * 0.033),
+      margin: EdgeInsets.symmetric(horizontal: 14.w),
       child: GridView.builder(
         padding: EdgeInsets.zero,
         itemCount: 12,
         physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 15 / 9),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 15.w / 9.h,
+        ),
         itemBuilder: (BuildContext context, int index) {
           Widget keyWidget = const SizedBox();
           if (index == 10) {
@@ -55,11 +56,11 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: colors[index],
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(5).r,
       ),
-      margin: const EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5).r,
       child: InkWell(
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(5).r,
         onTapDown: (details) {
           setState(() {
             colors[index] = const Color(0xffDDDDDD);
@@ -78,9 +79,9 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
             Text(
               text ?? '${index + 1}',
               textAlign: TextAlign.center,
-              style: TextStyle(color: textColors[index], fontSize: 28, fontWeight: FontWeight.w500),
+              style: TextStyle(color: textColors[index], fontSize: 28.h, fontWeight: FontWeight.w500),
             ),
-            Icon(iconData, size: 20, color: textColors[index]),
+            Icon(iconData, size: 20.h, color: textColors[index]),
           ),
         ),
       ),
