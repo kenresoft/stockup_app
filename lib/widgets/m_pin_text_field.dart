@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MPinTextField extends StatelessWidget {
   const MPinTextField({
@@ -23,9 +24,9 @@ class MPinTextField extends StatelessWidget {
       children: [
         for (int i = 0; i < controllers.length; i++)
           Container(
-            width: height * 0.067,
-            height: 80,
-            margin: i <= 3 ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(right: 0),
+            width: .14.sw,
+            height: 90.h,
+            margin: i <= 3 ? const EdgeInsets.only(right: 10).w : const EdgeInsets.only(right: 0),
             child: TextFormField(
               controller: controllers[i],
               focusNode: focusNodes[i],
@@ -36,11 +37,11 @@ class MPinTextField extends StatelessWidget {
                   controllers[i].text = value.substring(0, 1);
                 }
               },
-              style: const TextStyle(
+              style: TextStyle(
                 color: Color(0xFFEFEFEF),
-                fontSize: 21,
+                fontSize: 21.h,
                 fontWeight: FontWeight.w600,
-                letterSpacing: 0.30,
+                letterSpacing: 0.30.w,
               ),
               showCursor: false,
               textAlign: TextAlign.center,
@@ -51,14 +52,14 @@ class MPinTextField extends StatelessWidget {
                 counter: const Offstage(),
                 filled: true,
                 fillColor: const Color(0xFF282828),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                contentPadding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 20.h),
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(width: 2, color: Color(0x55555555)),
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(5).r,
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: const BorderSide(width: 2, color: Color(0xFF2FA2B9)),
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(5).r,
                 ),
               ),
             ),
