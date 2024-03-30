@@ -17,6 +17,7 @@ dependencies:
   extensionresoft: ^0.0.5
   fl_chart: ^0.66.2
   flutter_svg: ^2.0.10+1
+  flutter_screenutil: ^5.9.0
 
 dev_dependencies:
   flutter_test:
