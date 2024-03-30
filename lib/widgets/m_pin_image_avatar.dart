@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MPinImageAvatar extends StatelessWidget {
   const MPinImageAvatar({
@@ -11,22 +12,22 @@ class MPinImageAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 80,
+      top: 70.h,
       child: Container(
         width: width,
         alignment: Alignment.center,
-        child: const UnconstrainedBox(
+        child: UnconstrainedBox(
           child: ClipOval(
             child: CircleAvatar(
-              backgroundColor: Color(0xff040404),
-              radius: 55,
+              backgroundColor: const Color(0xff040404),
+              radius: 55.r,
               child: ClipOval(
                 child: CircleAvatar(
-                  radius: 48,
+                  radius: 48.r,
                   child: Image(
-                    width: 100,
-                    height: 100,
-                    image: AssetImage('assets/images/profile.jpg'),
+                    width: 100.w,
+                    height: 100.h,
+                    image: const AssetImage('assets/images/profile.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
