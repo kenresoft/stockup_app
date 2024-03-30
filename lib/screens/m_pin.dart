@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stockup_app/widgets/custom_keyboard.dart';
 import 'package:stockup_app/widgets/m_pin_image_avatar.dart';
 import 'package:stockup_app/widgets/m_pin_text_field.dart';
@@ -45,74 +46,78 @@ class _MPinState extends State<MPin> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-    return Scaffold(
-      backgroundColor: const Color(0xff131313),
-      body: SizedBox(
-        height: double.infinity,
-        child: Stack(
-          children: [
-            Container(
-              height: 130,
-              color: const Color(0xff86CEFD),
-            ),
-            Positioned(
-              top: 130,
-              bottom: 0,
-              child: SizedBox(
-                width: width,
-                child: Column(
-                  children: [
-                    const SizedBox(height: 70),
-                    const Text(
-                      'Welcome back,',
-                      style: TextStyle(color: Color(0xff898989)),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Raxit Agrawal',
-                      style: TextStyle(color: Color(0xff86CEFD), fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 50),
-                    const Text(
-                      'Enter 4 digit MPIN to login',
-                      style: TextStyle(color: Color(0xff898989), fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-
-                    const SizedBox(height: 30),
-
-                    /// TextField
-                    MPinTextField(height: height, width: width, controllers: controllers, focusNodes: focusNodes),
-
-                    const SizedBox(height: 30),
-                    const Text('----- OR -----', style: TextStyle(color: Color(0xff808080))),
-                    const SizedBox(height: 45),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+    return Builder(builder: (context) {
+      return Scaffold(
+        backgroundColor: const Color(0xff131313),
+        body: SingleChildScrollView(
+          child: SizedBox(
+            height: 1.05.sh,
+            child: Stack(
+              children: [
+                Positioned(
+                  child: Container(
+                    height: 130.h,
+                    color: const Color(0xff86CEFD),
+                  ),
+                ),
+                Positioned(
+                  top: 130.h,
+                  bottom: 0,
+                  child: SizedBox(
+                    width: 1.sw,
+                    child: Column(
                       children: [
-                        Icon(
-                          Icons.fingerprint,
-                          color: Color(0xff1CAB4E),
-                          size: 30,
+                        SizedBox(height: 70.h),
+                        const Text(
+                          'Welcome back,',
+                          style: TextStyle(color: Color(0xff898989)),
                         ),
-                        SizedBox(width: 5),
+                        SizedBox(height: 10.h),
                         Text(
-                          'Unlock with fingerprint',
-                          style: TextStyle(color: Color(0xff898989), fontSize: 15, fontWeight: FontWeight.bold),
+                          'Raxit Agrawal',
+                          style: TextStyle(color: const Color(0xff86CEFD), fontSize: 18.h, fontWeight: FontWeight.bold),
                         ),
+                        SizedBox(height: 50.h),
+                        Text(
+                          'Enter 4 digit MPIN to login',
+                          style: TextStyle(color: const Color(0xff898989), fontSize: 15.h, fontWeight: FontWeight.bold),
+                        ),
+
+                        SizedBox(height: 30.h),
+
+                        /// TextField
+                        MPinTextField(height: 1.sh, width: 1.sw, controllers: controllers, focusNodes: focusNodes),
+
+                        SizedBox(height: 30.h),
+                        const Text('----- OR -----', style: TextStyle(color: Color(0xff808080))),
+                        SizedBox(height: 45.h),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.fingerprint,
+                              color: const Color(0xff1CAB4E),
+                              size: 30.r,
+                            ),
+                            SizedBox(width: 5.w),
+                            Text(
+                              'Unlock with fingerprint',
+                              style: TextStyle(color: const Color(0xff898989), fontSize: 15.h, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 25.h),
+                        CustomKeyboard(onKeyPressed: handleKeyInput)
                       ],
                     ),
-                    const SizedBox(height: 25),
-                    CustomKeyboard(onKeyPressed: handleKeyInput)
-                  ],
+                  ),
                 ),
-              ),
+                MPinImageAvatar(width: 1.sw),
+              ],
             ),
-            MPinImageAvatar(width: width),
-          ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
