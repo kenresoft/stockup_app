@@ -19,7 +19,8 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 333.h,
+      height: 370.h,
+      //height: .6.sh,
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.symmetric(horizontal: 14.w),
       child: GridView.builder(
@@ -28,7 +29,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
-          childAspectRatio: 15.w / 9.h,
+          childAspectRatio: 15.w / 9.5.h,
         ),
         itemBuilder: (BuildContext context, int index) {
           Widget keyWidget = const SizedBox();
@@ -40,7 +41,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
             keyWidget;
           } else if (index == 11) {
             /// Render 'delete' key
-            keyWidget = buildKeyboardButton(index, 'delete', CupertinoIcons.delete_left);
+            keyWidget = buildKeyboardButton(index, 'delete', CupertinoIcons.arrow_turn_up_left);
           } else {
             /// Render numeric keys 1-9
             keyWidget = buildKeyboardButton(index, null, null);
@@ -79,9 +80,9 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
             Text(
               text ?? '${index + 1}',
               textAlign: TextAlign.center,
-              style: TextStyle(color: textColors[index], fontSize: 28.h, fontWeight: FontWeight.w500),
+              style: TextStyle(color: textColors[index], fontSize: 32.sp, fontWeight: FontWeight.w500),
             ),
-            Icon(iconData, size: 20.h, color: textColors[index]),
+            Icon(iconData, size: 25.sp, color: textColors[index]),
           ),
         ),
       ),
