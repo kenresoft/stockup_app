@@ -32,7 +32,7 @@ class _MPinState extends State<MPin> {
     } else {
       int emptyIndex = controllers.indexWhere((controller) => controller.text.isEmpty);
       if (emptyIndex != -1) {
-        controllers[emptyIndex].text = key;
+        controllers[emptyIndex].text = key.replaceAll(RegExp(r'.'), '⁕');
         if (emptyIndex + 1 < controllers.length) {
           FocusScope.of(context).requestFocus(focusNodes[emptyIndex + 1]);
         }
@@ -46,78 +46,82 @@ class _MPinState extends State<MPin> {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(builder: (context) {
-      return Scaffold(
-        backgroundColor: const Color(0xff131313),
-        body: SingleChildScrollView(
-          child: SizedBox(
-            height: 1.05.sh,
-            child: Stack(
-              children: [
-                Positioned(
-                  child: Container(
+    return Scaffold(
+      backgroundColor: const Color(0xff131313),
+      body: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 190.h,
+              child: Stack(
+                children: [
+                  Container(
                     height: 130.h,
+                    width: 1.sw,
                     color: const Color(0xff86CEFD),
                   ),
-                ),
-                Positioned(
-                  top: 130.h,
-                  bottom: 0,
-                  child: SizedBox(
-                    width: 1.sw,
-                    child: Column(
-                      children: [
-                        SizedBox(height: 70.h),
-                        const Text(
-                          'Welcome back,',
-                          style: TextStyle(color: Color(0xff898989)),
-                        ),
-                        SizedBox(height: 10.h),
-                        Text(
-                          'Raxit Agrawal',
-                          style: TextStyle(color: const Color(0xff86CEFD), fontSize: 18.h, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(height: 50.h),
-                        Text(
-                          'Enter 4 digit MPIN to login',
-                          style: TextStyle(color: const Color(0xff898989), fontSize: 15.h, fontWeight: FontWeight.bold),
-                        ),
-
-                        SizedBox(height: 30.h),
-
-                        /// TextField
-                        MPinTextField(height: 1.sh, width: 1.sw, controllers: controllers, focusNodes: focusNodes),
-
-                        SizedBox(height: 30.h),
-                        const Text('----- OR -----', style: TextStyle(color: Color(0xff808080))),
-                        SizedBox(height: 45.h),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.fingerprint,
-                              color: const Color(0xff1CAB4E),
-                              size: 30.r,
-                            ),
-                            SizedBox(width: 5.w),
-                            Text(
-                              'Unlock with fingerprint',
-                              style: TextStyle(color: const Color(0xff898989), fontSize: 15.h, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 25.h),
-                        CustomKeyboard(onKeyPressed: handleKeyInput)
-                      ],
-                    ),
+                  Positioned(
+                    top: 70.h,
+                    child: MPinImageAvatar(width: 1.sw),
                   ),
+                ],
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(height: 10.h),
+                const Text(
+                  'Welcome back,',
+                  style: TextStyle(color: Color(0xff898989), letterSpacing: -.5),
+                  textAlign: TextAlign.center,
                 ),
-                MPinImageAvatar(width: 1.sw),
+                SizedBox(height: 10.h),
+                Text(
+                  'Raxit Agrawal',
+                  style: TextStyle(color: const Color(0xff86CEFD), fontSize: 20.sp, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 50.h),
+                Text(
+                  'Enter 4 digit MPIN to login',
+                  style: TextStyle(color: const Color(0xff898989), fontSize: 19.sp, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 30.h),
+                MPinTextField(controllers: controllers, focusNodes: focusNodes),
+                SizedBox(height: 40.h),
+                Text(
+                  '$line    OR    $line',
+                  style: const TextStyle(color: Color(0xff808080)),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 45.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.fingerprint,
+                      color: const Color(0xff1CAB4E),
+                      size: 30.r,
+                    ),
+                    SizedBox(width: 5.w),
+                    Text(
+                      'Unlock with fingerprint',
+                      style: TextStyle(color: const Color(0xff898989), fontSize: 19.sp, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 25.h),
+                CustomKeyboard(onKeyPressed: handleKeyInput),
               ],
             ),
-          ),
+          ],
         ),
-      );
-    });
+      ),
+    );
   }
+
+  String get line => '- - - - - - - - - - - - - - -';
 }
