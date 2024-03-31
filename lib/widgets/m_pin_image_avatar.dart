@@ -11,25 +11,22 @@ class MPinImageAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      top: 70.h,
-      child: Container(
-        width: width,
-        alignment: Alignment.center,
-        child: UnconstrainedBox(
-          child: ClipOval(
-            child: CircleAvatar(
-              backgroundColor: const Color(0xff040404),
-              radius: 55.r,
-              child: ClipOval(
-                child: CircleAvatar(
-                  radius: 48.r,
-                  child: Image(
-                    width: 100.w,
-                    height: 100.h,
-                    image: const AssetImage('assets/images/profile.jpg'),
-                    fit: BoxFit.cover,
-                  ),
+    return Container(
+      width: width,
+      alignment: Alignment.center,
+      child: UnconstrainedBox(
+        child: ClipOval(
+          child: CircleAvatar(
+            backgroundColor: const Color(0xff040404),
+            radius: 55.r,
+            child: ClipOval(
+              child: CircleAvatar(
+                radius: 48.r,
+                child: Image(
+                  width: 100.w,
+                  height: 100.h,
+                  image: const AssetImage('assets/images/profile.jpg'),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
