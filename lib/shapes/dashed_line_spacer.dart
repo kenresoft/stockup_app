@@ -66,14 +66,13 @@ class DashedLinePainter extends CustomPainter {
   }
 }
 
-class DashedLine extends StatelessWidget {
-  const DashedLine({super.key});
+class DashedLineSpacer extends StatelessWidget {
+  const DashedLineSpacer({super.key});
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: DashedLinePainter(),
-      //size: Size(MediaQuery.of(context).size.width - 50, 10),
     );
   }
 }
