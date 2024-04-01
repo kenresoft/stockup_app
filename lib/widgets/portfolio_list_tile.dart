@@ -1,5 +1,6 @@
 import 'package:extensionresoft/extensionresoft.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stockup_app/models/watchlist.dart';
 
 class PortfolioListTile extends StatefulWidget {
@@ -24,7 +25,7 @@ class _PortfolioListTileState extends State<PortfolioListTile> {
   Widget build(BuildContext context) {
     return Container(
       width: widget.width,
-      margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 19),
+      margin: EdgeInsets.symmetric(horizontal: 25.w, vertical: 19.h),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -33,19 +34,23 @@ class _PortfolioListTileState extends State<PortfolioListTile> {
             children: [
               Row(
                 children: [
-                  const Icon(Icons.mail_outline, color: Color(0xff7DC3F0), size: 18),
-                  const SizedBox(width: 6),
-                  Text('${widget.watchList[widget.index].firstRowItems.$1}', style: const TextStyle(color: Color(0xff7DC3F0))),
-                  const SizedBox(width: 6),
+                  Icon(Icons.mail_outline, color: const Color(0xff7DC3F0), size: 18.r),
+                  SizedBox(width: 6.w),
+                  Text(
+                    '${widget.watchList[widget.index].firstRowItems.$1}',
+                    style: TextStyle(fontSize: 14.sp, color: const Color(0xff7DC3F0)),
+                  ),
+                  SizedBox(width: 6.w),
                   Text(
                     'Avg. ${widget.watchList[widget.index].firstRowItems.$2}',
-                    style: const TextStyle(color: Color(0xff696969), fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 14.sp, color: const Color(0xff696969), fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
               Text(
                 '(${widget.watchList[widget.index].firstRowItems.$3}%)',
                 style: TextStyle(
+                  fontSize: 14.sp,
                   color: condition(
                     '${widget.watchList[widget.index].firstRowItems.$3}'.contains('-'),
                     const Color(0xff963B3B),
@@ -55,13 +60,13 @@ class _PortfolioListTileState extends State<PortfolioListTile> {
               ),
             ],
           ),
-          const SizedBox(height: 5),
+          SizedBox(height: 5.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 widget.watchList[widget.index].secondRowItems.$1,
-                style: const TextStyle(color: Color(0xffffffff), fontWeight: FontWeight.bold, fontSize: 15),
+                style: TextStyle(fontSize: 15.sp, color: const Color(0xffffffff), fontWeight: FontWeight.bold),
               ),
               Text(
                 condition(
@@ -70,6 +75,7 @@ class _PortfolioListTileState extends State<PortfolioListTile> {
                   '+ ${widget.watchList[widget.index].secondRowItems.$2}%',
                 ),
                 style: TextStyle(
+                    fontSize: 14.sp,
                     color: condition(
                       '${widget.watchList[widget.index].secondRowItems.$2}'.contains('-'),
                       const Color(0xffB94646),
@@ -79,26 +85,26 @@ class _PortfolioListTileState extends State<PortfolioListTile> {
               ),
             ],
           ),
-          const SizedBox(height: 5),
+          SizedBox(height: 5.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'Invested ${widget.watchList[widget.index].thirdRowItems.$1}',
-                style: const TextStyle(color: Color(0xff696969), fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 14.sp, color: const Color(0xff696969), fontWeight: FontWeight.bold),
               ),
               Row(
                 children: [
-                  const Text(
+                  Text(
                     'LTP',
-                    style: TextStyle(color: Color(0xff696969), fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 14.sp, color: const Color(0xff696969), fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(width: 6),
+                  SizedBox(width: 6.w),
                   Text(
                     '${widget.watchList[widget.index].thirdRowItems.$2}',
-                    style: const TextStyle(color: Color(0xff909090), fontWeight: FontWeight.w800),
+                    style: TextStyle(fontSize: 14.sp, color: const Color(0xff909090), fontWeight: FontWeight.w800),
                   ),
-                  const SizedBox(width: 6),
+                  SizedBox(width: 6.w),
                   Text(
                     condition(
                       '${widget.watchList[widget.index].thirdRowItems.$3}'.contains('-'),
@@ -106,6 +112,7 @@ class _PortfolioListTileState extends State<PortfolioListTile> {
                       '(+ ${widget.watchList[widget.index].thirdRowItems.$3}%)',
                     ),
                     style: TextStyle(
+                      fontSize: 14.sp,
                       color: condition(
                         '${widget.watchList[widget.index].thirdRowItems.$3}'.contains('-'),
                         const Color(0xff963B3B),
