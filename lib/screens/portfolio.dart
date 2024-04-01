@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stockup_app/widgets/portfolio_list_tile.dart';
 
 import '../models/watchlist.dart';
@@ -52,7 +53,7 @@ class _PortfolioState extends State<Portfolio> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    //double height = MediaQuery.of(context).size.height;
     return AnnotatedRegion(
       value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
       child: Scaffold(
@@ -64,28 +65,28 @@ class _PortfolioState extends State<Portfolio> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  Container(color: const Color(0xff2B2B2B), height: height * .05),
+                  Container(color: const Color(0xff2B2B2B), height: 50.h),
                   SizedBox(
-                    height: height * .396,
+                    height: 396.h,
                     child: Stack(
                       children: [
                         /// Background
                         Positioned(
                           top: -1,
-                          height: height * .23,
+                          height: 230.h,
                           width: width,
                           child: Container(color: const Color(0xff2B2B2B)),
                         ),
 
                         /// Toolbar
                         Positioned(
-                          top: 10,
+                          top: 10.h,
                           width: width,
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 25).w,
                             child: Text(
                               'Portfolio',
-                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
+                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.h),
                             ),
                           ),
                         ),
@@ -93,10 +94,10 @@ class _PortfolioState extends State<Portfolio> {
                         /// Switch
                         Positioned(
                           width: width,
-                          top: (height * .2) / 2.6,
-                          height: height * .052,
+                          top: 77.h,
+                          height: 52.h,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 25),
+                            padding: const EdgeInsets.symmetric(horizontal: 25).w,
                             child: Stack(
                               children: [
                                 GestureDetector(
@@ -104,7 +105,7 @@ class _PortfolioState extends State<Portfolio> {
                                     painter: PortfolioSwitchClip(currentIndex: switchIndex),
                                     child: Container(
                                       width: width,
-                                      height: height * .052,
+                                      height: 52.h,
                                       alignment: Alignment.center,
                                       padding: EdgeInsets.symmetric(horizontal: width / 7),
                                       child: Row(
@@ -142,46 +143,46 @@ class _PortfolioState extends State<Portfolio> {
                         /// Dashboard Head
                         Positioned(
                           width: width,
-                          top: height * .17,
-                          height: height * .2,
+                          top: 170.h,
+                          height: 200.h,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 25),
+                            padding: const EdgeInsets.symmetric(horizontal: 25).w,
                             child: CustomPaint(
                               painter: PortfolioClip(),
                               child: Container(
-                                padding: const EdgeInsets.all(20).copyWith(top: 30, bottom: 15),
-                                child: const Column(
+                                padding: EdgeInsets.all(20.r).copyWith(top: 30.h, bottom: 15.h),
+                                child:  Column(
                                   children: [
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           'Invested',
-                                          style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xff34414B)),
+                                          style: TextStyle(fontSize: 14.h,fontWeight: FontWeight.bold, color: const Color(0xff34414B)),
                                         ),
                                         Text(
                                           'Current',
-                                          style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xff34414B)),
+                                          style: TextStyle(fontSize: 14.h,fontWeight: FontWeight.bold, color: const Color(0xff34414B)),
                                         ),
                                       ],
                                     ),
-                                    SizedBox(height: 10),
+                                    SizedBox(height: 10.h),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           '50,560',
-                                          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                          style: TextStyle(fontSize: 25.h, fontWeight: FontWeight.bold),
                                         ),
                                         Text(
                                           '60,112',
-                                          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                          style: TextStyle(fontSize: 25.h, fontWeight: FontWeight.bold),
                                         ),
                                       ],
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.symmetric(vertical: 5),
-                                      child: Divider(thickness: 2, color: Color(0xff658197)),
+                                      padding: EdgeInsets.symmetric(vertical: 5.h),
+                                      child: Divider(thickness: 2.h, color: const Color(0xff658197)),
                                     ),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -189,17 +190,17 @@ class _PortfolioState extends State<Portfolio> {
                                       children: [
                                         Text(
                                           'P&L',
-                                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                          style: TextStyle(fontSize: 18.h, fontWeight: FontWeight.bold),
                                         ),
                                         Column(
                                           children: [
                                             Text(
                                               '9,552',
-                                              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                              style: TextStyle(fontSize: 25.h, fontWeight: FontWeight.bold),
                                             ),
                                             Text(
                                               '(+18.56%)',
-                                              style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+                                              style: TextStyle(fontSize: 14.h, color: Colors.green, fontWeight: FontWeight.bold),
                                             ),
                                           ],
                                         ),
@@ -212,16 +213,16 @@ class _PortfolioState extends State<Portfolio> {
                           ),
                         ),
                         Positioned.fromRect(
-                          rect: Rect.fromCenter(center: Offset(width / 2, height * .37), width: 105, height: 48),
+                          rect: Rect.fromCenter(center: Offset(width / 2, 370.h), width: 105.w, height: 48.h),
                           child: OutlinedButton(
-                            style: const ButtonStyle(
-                              padding: MaterialStatePropertyAll(EdgeInsets.zero),
-                              backgroundColor: MaterialStatePropertyAll(Color(0xff1F1F1F)),
-                              foregroundColor: MaterialStatePropertyAll(Color(0xff83CCFB)),
-                              side: MaterialStatePropertyAll(BorderSide(color: Color(0xff2A2A2A), width: 2)),
+                            style: ButtonStyle(
+                              padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+                              backgroundColor: const MaterialStatePropertyAll(Color(0xff1F1F1F)),
+                              foregroundColor: const MaterialStatePropertyAll(Color(0xff83CCFB)),
+                              side: MaterialStatePropertyAll(BorderSide(color: const Color(0xff2A2A2A), width: 2.w)),
                             ),
                             onPressed: () {},
-                            child: const Text('Add Money'),
+                            child: Text('Add Money', style: TextStyle(fontSize: 14.h)),
                           ),
                         )
                       ],
@@ -230,28 +231,30 @@ class _PortfolioState extends State<Portfolio> {
 
                   Stack(
                     children: [
-                      Align(
+                      Container(
                         alignment: Alignment.center,
+                        margin: const EdgeInsets.symmetric(horizontal: 25).w,
                         child: Column(
                           children: [
                             const DashedLineSpacer(),
-                            const SizedBox(height: 45),
+                            SizedBox(height: 54.h),
                             Transform(transform: Matrix4.identity()..rotateX(pi), child: const DashedLineSpacer()),
                           ],
                         ),
                       ),
                       Container(
-                        height: 55,
-                        margin: const EdgeInsets.symmetric(horizontal: 25),
-                        child: const Row(
+                        height: 55.h,
+                        margin: EdgeInsets.symmetric(horizontal: 25.h),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(CupertinoIcons.search, color: Colors.white),
+                            const Icon(CupertinoIcons.search, color: Colors.white),
                             Row(
                               children: [
-                                Icon(CupertinoIcons.slider_horizontal_3, color: Colors.white),
-                                SizedBox(width: 20),
-                                Icon(CupertinoIcons.chart_pie, color: Colors.white),
+                                const Icon(CupertinoIcons.slider_horizontal_3, color: Colors.white),
+                                SizedBox(width: 20.w),
+                                const Icon(CupertinoIcons.chart_pie, color: Colors.white),
                               ],
                             ),
                           ],
@@ -270,7 +273,7 @@ class _PortfolioState extends State<Portfolio> {
 
                   /// Portfolio List Body
                   SizedBox(
-                    height: 500,
+                    height: 500.h,
                     child: ListView.separated(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
@@ -284,7 +287,7 @@ class _PortfolioState extends State<Portfolio> {
                       separatorBuilder: (context, index) {
                         return Container(
                           width: width,
-                          height: 2,
+                          height: 2.h,
                           decoration: const BoxDecoration(
                             gradient: RadialGradient(colors: [Color(0xff383838), Colors.transparent], radius: 160),
                           ),
