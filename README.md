@@ -9,6 +9,14 @@ with the tools and insights you need to make informed decisions and maximize you
 |------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
 | ![Screenshot 1](https://github.com/kenresoft/stockup_app/blob/master/screenshots/home_screen.png?raw=true) | ![ScreenShot 2](https://github.com/kenresoft/stockup_app/blob/master/screenshots/funds_screen.png?raw=true) |
 
+| Home Screen                                                                                                  | Funds Screen                                                                                                    |
+|--------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
+| ![Screenshot 1](https://github.com/kenresoft/stockup_app/blob/master/screenshots/invite_screen.png?raw=true) | ![ScreenShot 2](https://github.com/kenresoft/stockup_app/blob/master/screenshots/portfolio_screen.png?raw=true) |
+
+| Home Screen                                                                                                  | Funds Screen                                                                                                    |
+|--------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
+| ![Screenshot 1](https://github.com/kenresoft/stockup_app/blob/master/screenshots/unlock_screen.png?raw=true) | ![ScreenShot 2](https://github.com/kenresoft/stockup_app/blob/master/screenshots/portfolio_screen.png?raw=true) |
+
 ### Attribution
 
 Design by: [MindInventory UI/UX ](https://dribbble.com/shots/23712740-Stockup-Stock-Market-App) on Dribble.
