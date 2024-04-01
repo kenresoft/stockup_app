@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DashedLinePainter extends CustomPainter {
   @override
@@ -10,12 +11,12 @@ class DashedLinePainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.round;
 
-    const dashWidth = 3;
-    const dashSpace = 5;
+    double dashWidth = 3.w;
+    double dashSpace = 5.w;
     var currentX = 0.0;
     var currentY = 0.0;
 
-    while (currentX < 1.9 * size.width / 6) {
+    while (currentX < 1.9.w * size.width / 6.w) {
       canvas.drawLine(
         Offset(currentX, currentY),
         Offset(currentX + dashWidth, currentY),
@@ -24,7 +25,7 @@ class DashedLinePainter extends CustomPainter {
       currentX += dashWidth + dashSpace;
     }
 
-    while (currentY < 10) {
+    while (currentY < 10.h) {
       canvas.drawLine(
         Offset(currentX, currentY),
         Offset(currentX + dashWidth, currentY + dashWidth),
@@ -33,7 +34,7 @@ class DashedLinePainter extends CustomPainter {
       currentX += dashWidth + dashSpace;
       currentY += dashWidth + dashSpace;
     }
-    while (currentX < 3.8 * size.width / 6) {
+    while (currentX < 3.8.w * size.width / 6.w) {
       canvas.drawLine(
         Offset(currentX, currentY),
         Offset(currentX + dashWidth, currentY),
@@ -71,8 +72,11 @@ class DashedLineSpacer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: DashedLinePainter(),
+    return SizedBox(
+      width: 1.sw,
+      child: CustomPaint(
+        painter: DashedLinePainter(),
+      ),
     );
   }
 }
