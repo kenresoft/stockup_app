@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../models/transaction.dart';
 import '../shapes/dashed_line_spacer.dart';
@@ -18,40 +19,36 @@ class _FundsState extends State<Funds> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    //double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: const Color(0xff121212),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              color: const Color(0xff84CEFE),
-              height: height * .05,
-            ),
             SizedBox(
-              height: height * .33,
+              height: 380.h,
               child: Stack(
                 children: [
                   /// Background
                   Positioned(
                     top: 0,
-                    height: height * .26,
+                    height: 310.h,
                     width: width,
                     child: Container(color: const Color(0xff84CEFE)),
                   ),
 
                   /// Toolbar
                   Positioned(
-                    top: 10,
+                    top: 60.h,
                     width: width,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      padding: const EdgeInsets.symmetric(horizontal: 30).w,
                       child: Row(
                         children: [
                           InkWell(onTap: () => Navigator.pop(context), child: const Icon(CupertinoIcons.arrow_left)),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25),
-                            child: Text('Funds', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 25).w,
+                            child: const Text('Funds', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                           ),
                         ],
                       ),
@@ -61,10 +58,10 @@ class _FundsState extends State<Funds> {
                   /// Header
                   Positioned(
                     width: width,
-                    top: (height * .2) / 2,
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
-                      child: Column(
+                    top: 150.h,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30).w,
+                      child: const Column(
                         children: [
                           Text('Total available balance', style: TextStyle(color: Color(0xff415663))),
                           Text('10,245.00', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
@@ -76,14 +73,14 @@ class _FundsState extends State<Funds> {
                   /// Dashboard Head
                   Positioned(
                     width: width,
-                    top: height * .2199,
+                    top: 269.9.h,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         buildBoardA(
                           width,
-                          height,
+                          1.sh,
                           const Color(0xff9CECAE),
                           CupertinoIcons.bag_badge_plus,
                         ),
@@ -91,7 +88,7 @@ class _FundsState extends State<Funds> {
                           onTap: () => Navigator.pushNamed(context, '/withdraw'),
                           child: buildBoardA(
                             width,
-                            height,
+                            1.sh,
                             const Color(0xffECB39C),
                             CupertinoIcons.arrow_down_doc,
                           ),
@@ -103,9 +100,9 @@ class _FundsState extends State<Funds> {
               ),
             ),
 
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 60),
-              child: Row(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 60).w,
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Add Money', style: TextStyle(color: Colors.white, fontSize: 18)),
@@ -118,7 +115,7 @@ class _FundsState extends State<Funds> {
 
             Container(
               width: width,
-              margin: const EdgeInsets.symmetric(horizontal: 30).copyWith(top: 15),
+              margin: EdgeInsets.symmetric(horizontal: 30.w).copyWith(top: 15.h),
               child: Transform(transform: Matrix4.identity()..rotateX(pi), child: const DashedLineSpacer()),
               //child: CustomPaint(painter: FundsDividerClip()),
             ),
@@ -143,16 +140,16 @@ class _FundsState extends State<Funds> {
             ),
 
             SizedBox(
-              height: height / 2,
+              height: 1.sh / 2,
               child: ListView.builder(
                 itemCount: transactions.length,
                 padding: EdgeInsets.zero,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 25),
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 25).w,
                     leading: CircleAvatar(
                       backgroundColor: const Color(0xff222222),
-                      maxRadius: 25,
+                      maxRadius: 25.r,
                       child: transactions[index].amount.contains('+')
                           ? const Icon(CupertinoIcons.bag_badge_plus, color: Color(0xff9CECAE))
                           : const Icon(CupertinoIcons.arrow_down_doc, color: Color(0xffECB39C)),
@@ -185,12 +182,12 @@ class _FundsState extends State<Funds> {
   Widget buildBoardA(double width, double height, Color bgColor, IconData iconData) {
     return SizedBox(
       width: width * 0.2,
-      height: height * 0.11,
+      height: 110.h,
       child: CustomPaint(
         painter: FundsClip(bgColor),
         child: Icon(
           iconData,
-          size: 45,
+          size: 45.r,
         ),
       ),
     );
