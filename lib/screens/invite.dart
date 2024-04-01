@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stockup_app/shapes/dashed_border_container.dart';
 import 'package:stockup_app/shapes/dashed_line_spacer.dart';
 import 'package:stockup_app/shapes/invite_clip.dart';
@@ -18,7 +19,7 @@ class Invite extends StatefulWidget {
 class _InviteState extends State<Invite> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    //double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return AnnotatedRegion(
       value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
@@ -28,34 +29,30 @@ class _InviteState extends State<Invite> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                color: const Color(0xff84CEFE),
-                height: height * .05,
-              ),
               SizedBox(
-                height: height * .33,
+                height: 380.h,
                 child: Stack(
                   children: [
                     /// Background
                     Positioned(
                       top: 0,
-                      height: height * .26,
-                      width: width,
+                      height: 310.h,
+                      width: 1.sw,
                       child: Container(color: const Color(0xff84CEFE)),
                     ),
 
                     /// Toolbar
                     Positioned(
-                      top: 10,
-                      width: width,
+                      top: 60.h,
+                      width: 1.sw,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        padding: const EdgeInsets.symmetric(horizontal: 30).w,
                         child: Row(
                           children: [
                             InkWell(onTap: () => Navigator.pop(context), child: const Icon(CupertinoIcons.arrow_left)),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 25),
-                              child: Text('Invite Friends', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 25).w,
+                              child: const Text('Invite Friends', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                             ),
                           ],
                         ),
@@ -64,19 +61,19 @@ class _InviteState extends State<Invite> {
 
                     /// Header
                     Positioned(
-                      width: width,
-                      top: (height * .2) / 2.4,
+                      width: 1.sw,
+                      top: 137.5.h,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        padding: const EdgeInsets.symmetric(horizontal: 30).w,
                         child: Column(
                           children: [
-                            const Text(
+                            Text(
                               'Refer Friend & Earn upto ₹500',
-                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                             ),
                             Container(
-                              margin: const EdgeInsets.only(top: 15),
-                              width: width - 120,
+                              margin: EdgeInsets.only(top: 15.h),
+                              width: 1.sw - 120.w,
                               child: const Text(
                                 'Send a referral link to your friends via Whatsapp. Facebook and instagram.',
                                 textAlign: TextAlign.center,
@@ -90,33 +87,33 @@ class _InviteState extends State<Invite> {
 
                     /// Dashboard Head
                     Positioned(
-                      width: width,
-                      top: height * .259,
-                      child: const SizedBox(
-                        height: 65,
-                        child: InviteClip(),
+                      width: 1.sw,
+                      top: 309.h,
+                      child: SizedBox(
+                        height: 65.h,
+                        child: const InviteClip(),
                       ),
                     ),
 
                     Positioned(
-                      width: width,
-                      top: height * .2,
-                      child: const Align(
+                      width: 1.sw,
+                      top: 250.h,
+                      child: Align(
                         alignment: Alignment.center,
                         child: Image(
-                          image: AssetImage('assets/images/networking.png'),
-                          height: 85,
-                          width: 100,
+                          image: const AssetImage('assets/images/networking.png'),
+                          height: 85.h,
+                          width: 100.w,
                           fit: BoxFit.fitHeight,
                         ),
                       ),
                     ),
                     Positioned(
-                      top: height * .01,
+                      top: 60.h,
                       right: 0,
-                      child: const SizedBox(
-                        width: 100,
-                        height: 56,
+                      child: SizedBox(
+                        width: 100.w,
+                        height: 56.h,
                         child: InviteEarningsClip(
                           child: Center(
                             child: Column(
@@ -125,12 +122,9 @@ class _InviteState extends State<Invite> {
                               children: [
                                 Text(
                                   '₹1,000',
-                                  style: TextStyle(color: Color(0xff84CEFE), fontSize: 18),
+                                  style: TextStyle(color: const Color(0xff84CEFE), fontSize: 18.sp),
                                 ),
-                                Text(
-                                  'Earnings',
-                                  style: TextStyle(color: Color(0xff8b8b8b)),
-                                ),
+                                const Text('Earnings', style: TextStyle(color: Color(0xff8b8b8b))),
                               ],
                             ),
                           ),
@@ -140,67 +134,61 @@ class _InviteState extends State<Invite> {
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 30),
+                margin: const EdgeInsets.symmetric(horizontal: 30).w,
                 child: DashedBorderContainer(
-                  width: width / 1.5,
-                  height: 59,
+                  width: 1.sw / 1.5,
+                  height: 59.h,
                   borderColor: const Color(0xff757575),
                   child: Row(
                     children: [
                       Expanded(
                         child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 13).copyWith(left: 25),
-                          decoration: const BoxDecoration(
-                            color: Color(0xff222222),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(8),
-                              bottomLeft: Radius.circular(8),
-                            ),
-                          ),
-                          child: const Text(
+                          padding: EdgeInsets.symmetric(vertical: 13.h).copyWith(left: 25.w),
+                          decoration: const BoxDecoration(color: Color(0xff222222)),
+                          child: Text(
                             'WER889CSDS',
-                            style: TextStyle(color: Color(0xff86CEFD), fontWeight: FontWeight.bold, fontSize: 21),
+                            style: TextStyle(color: const Color(0xff86CEFD), fontWeight: FontWeight.bold, fontSize: 21.sp),
                           ),
                         ),
                       ),
                       Container(
                         color: const Color(0xff121212),
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        padding: const EdgeInsets.symmetric(horizontal: 15).w,
                         child: const Icon(Icons.copy, color: Color(0xff929292)),
                       ),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height: 22),
+              SizedBox(height: 22.h),
               SizedBox(
-                width: width,
-                child: const Text(
+                width: 1.sw,
+                child: Text(
                   'Share via',
-                  style: TextStyle(color: Color(0xffb2b2b2), fontSize: 15, fontWeight: FontWeight.bold),
+                  style: TextStyle(color: const Color(0xffb2b2b2), fontSize: 15.sp, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 40),
+              SizedBox(height: 40.h),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                width: width,
+                margin: const EdgeInsets.symmetric(horizontal: 30).w,
+                width: 1.sw,
                 child: const DashedLineSpacer(),
               ),
-              const SizedBox(height: 40),
+              SizedBox(height: 40.h),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 30).w,
                 child: const Text(
                   'Frequently Asked Questions:',
                   style: TextStyle(color: Color(0xffb2b2b2), fontSize: 16, fontWeight: FontWeight.w600),
                 ),
               ),
-              const SizedBox(height: 15),
+              SizedBox(height: 15.h),
               Container(
                 color: const Color(0xff121212),
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 30).w,
                 child: const ExpansionTile(
                   shape: Border(),
                   tilePadding: EdgeInsets.zero,
@@ -220,14 +208,14 @@ class _InviteState extends State<Invite> {
                 ),
               ),
               Container(
-                width: width,
-                margin: const EdgeInsets.only(top: 5),
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                width: 1.sw,
+                margin: EdgeInsets.only(top: 5.h),
+                padding: const EdgeInsets.symmetric(horizontal: 30).w,
                 child: const DashedLineDivider(),
               ),
               Container(
                 color: const Color(0xff121212),
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 30).w,
                 child: const ExpansionTile(
                   shape: Border(),
                   tilePadding: EdgeInsets.zero,
@@ -247,14 +235,14 @@ class _InviteState extends State<Invite> {
                 ),
               ),
               Container(
-                width: width,
-                margin: const EdgeInsets.only(top: 5),
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                width: 1.sw,
+                margin: EdgeInsets.only(top: 5.h),
+                padding: const EdgeInsets.symmetric(horizontal: 30).w,
                 child: const DashedLineDivider(),
               ),
               Container(
                 color: const Color(0xff121212),
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 30).w,
                 child: const ExpansionTile(
                   shape: Border(),
                   tilePadding: EdgeInsets.zero,
@@ -274,14 +262,14 @@ class _InviteState extends State<Invite> {
                 ),
               ),
               Container(
-                width: width,
-                margin: const EdgeInsets.only(top: 5),
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                width: 1.sw,
+                margin: EdgeInsets.only(top: 5.h),
+                padding: const EdgeInsets.symmetric(horizontal: 30).w,
                 child: const DashedLineDivider(),
               ),
               Container(
                 color: const Color(0xff121212),
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 30).w,
                 child: const ExpansionTile(
                   shape: Border(),
                   tilePadding: EdgeInsets.zero,
@@ -301,9 +289,9 @@ class _InviteState extends State<Invite> {
                 ),
               ),
               Container(
-                width: width,
-                margin: const EdgeInsets.only(top: 5),
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                width: 1.sw,
+                margin: EdgeInsets.only(top: 5.h),
+                padding: const EdgeInsets.symmetric(horizontal: 30).w,
                 child: const DashedLineDivider(),
               ),
             ],
