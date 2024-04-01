@@ -47,7 +47,7 @@ class LinePlot extends StatelessWidget {
             ],
             //minX: 0,
             maxX: 6,
-            minY: 3,
+            minY: 3.5,
             maxY: 5.5,
             titlesData: const FlTitlesData(
               /*leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false, getTitlesWidget: (value, meta) {
