@@ -11,11 +11,11 @@ with the tools and insights you need to make informed decisions and maximize you
 
 | Home Screen                                                                                                  | Funds Screen                                                                                                    |
 |--------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| ![Screenshot 1](https://github.com/kenresoft/stockup_app/blob/master/screenshots/invite_screen.png?raw=true) | ![ScreenShot 2](https://github.com/kenresoft/stockup_app/blob/master/screenshots/portfolio_screen.png?raw=true) |
+| ![Screenshot 3](https://github.com/kenresoft/stockup_app/blob/master/screenshots/invite_screen.png?raw=true) | ![ScreenShot 3](https://github.com/kenresoft/stockup_app/blob/master/screenshots/portfolio_screen.png?raw=true) |
 
 | Home Screen                                                                                                  | Funds Screen                                                                                                    |
 |--------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| ![Screenshot 1](https://github.com/kenresoft/stockup_app/blob/master/screenshots/unlock_screen.png?raw=true) | ![ScreenShot 2](https://github.com/kenresoft/stockup_app/blob/master/screenshots/portfolio_screen.png?raw=true) |
+| ![Screenshot 5](https://github.com/kenresoft/stockup_app/blob/master/screenshots/unlock_screen.png?raw=true) | ![ScreenShot 6](https://github.com/kenresoft/stockup_app/blob/master/screenshots/portfolio_screen.png?raw=true) |
 
 ### Attribution
 
