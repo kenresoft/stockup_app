@@ -18,7 +18,7 @@ class Funds extends StatefulWidget {
 class _FundsState extends State<Funds> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    //double width = MediaQuery.of(context).size.width;
     //double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: const Color(0xff121212),
@@ -33,14 +33,14 @@ class _FundsState extends State<Funds> {
                   Positioned(
                     top: 0,
                     height: 310.h,
-                    width: width,
+                    width: 1.sw,
                     child: Container(color: const Color(0xff84CEFE)),
                   ),
 
                   /// Toolbar
                   Positioned(
                     top: 60.h,
-                    width: width,
+                    width: 1.sw,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30).w,
                       child: Row(
@@ -57,7 +57,7 @@ class _FundsState extends State<Funds> {
 
                   /// Header
                   Positioned(
-                    width: width,
+                    width: 1.sw,
                     top: 150.h,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30).w,
@@ -72,14 +72,14 @@ class _FundsState extends State<Funds> {
 
                   /// Dashboard Head
                   Positioned(
-                    width: width,
+                    width: 1.sw,
                     top: 269.9.h,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         buildBoardA(
-                          width,
+                          1.sw,
                           1.sh,
                           const Color(0xff9CECAE),
                           CupertinoIcons.bag_badge_plus,
@@ -87,7 +87,7 @@ class _FundsState extends State<Funds> {
                         GestureDetector(
                           onTap: () => Navigator.pushNamed(context, '/withdraw'),
                           child: buildBoardA(
-                            width,
+                            1.sw,
                             1.sh,
                             const Color(0xffECB39C),
                             CupertinoIcons.arrow_down_doc,
@@ -102,11 +102,11 @@ class _FundsState extends State<Funds> {
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 60).w,
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Add Money', style: TextStyle(color: Colors.white, fontSize: 18)),
-                  Text('Withdrawal', style: TextStyle(color: Colors.white, fontSize: 18)),
+                  Text('Add Money', style: TextStyle(color: Colors.white, fontSize: 18.h)),
+                  Text('Withdrawal', style: TextStyle(color: Colors.white, fontSize: 18.h)),
                 ],
               ),
             ),
@@ -114,26 +114,26 @@ class _FundsState extends State<Funds> {
             const SizedBox(height: 20),
 
             Container(
-              width: width,
+              width: 1.sw,
               margin: EdgeInsets.symmetric(horizontal: 30.w).copyWith(top: 15.h),
               child: Transform(transform: Matrix4.identity()..rotateX(pi), child: const DashedLineSpacer()),
               //child: CustomPaint(painter: FundsDividerClip()),
             ),
 
             /// Dashboard Body
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'Recent Transactions',
-                    style: TextStyle(color: Color(0xffBBBBBB), fontWeight: FontWeight.bold, fontSize: 16),
+                    style: TextStyle(color: const Color(0xffBBBBBB), fontWeight: FontWeight.bold, fontSize: 16.h),
                   ),
                   Icon(
                     Icons.calendar_today_outlined,
-                    color: Color(0xffCFCFCF),
-                    size: 23,
+                    color: const Color(0xffCFCFCF),
+                    size: 23.h,
                   ),
                 ],
               ),
@@ -165,7 +165,7 @@ class _FundsState extends State<Funds> {
                     trailing: Text(
                       transactions[index].amount,
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.h,
                         color: transactions[index].amount.contains('+') ? const Color(0xff9CECAE) : const Color(0xffD64F4F),
                       ),
                     ),
