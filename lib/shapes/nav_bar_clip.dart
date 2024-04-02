@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NavBarClip extends CustomPainter {
   @override
@@ -18,43 +19,43 @@ class NavBarClip extends CustomPainter {
 
     final path = Path();
 
-    path.addOval(Rect.fromCircle(center: const Offset(25, 30), radius: 28));
-    path.addOval(Rect.fromCircle(center: const Offset(70, 30), radius: 28));
-    path.addOval(Rect.fromCircle(center: const Offset(125, 30), radius: 35));
-    path.addOval(Rect.fromCircle(center: const Offset(180, 30), radius: 28));
-    path.addOval(Rect.fromCircle(center: const Offset(225, 30), radius: 28));
+    path.addOval(Rect.fromCircle(center: Offset(25.w, 30.h), radius: 28.w));
+    path.addOval(Rect.fromCircle(center: Offset(70.w, 30.h), radius: 28.w));
+    path.addOval(Rect.fromCircle(center: Offset(125.w, 30.h), radius: 35.w));
+    path.addOval(Rect.fromCircle(center: Offset(180.w, 30.h), radius: 28.w));
+    path.addOval(Rect.fromCircle(center: Offset(225.w, 30.h), radius: 28.w));
 
     canvas.drawPath(path, paint);
 
     /// 1 - 2
     canvas.drawPath(
         Path()
-          ..moveTo(40, 13)
-          ..quadraticBezierTo(47.5, 22, 55, 13),
+          ..moveTo(40.w, 13.h)
+          ..quadraticBezierTo(47.5.w, 22.h, 55.w, 13.h),
         curvePaint);
 
     /// 2 - 3
     canvas.drawPath(
         Path()
-          ..moveTo(85, 13)
-          ..quadraticBezierTo(92.5, 22, 98, 13),
+          ..moveTo(85.w, 13.h)
+          ..quadraticBezierTo(92.5.w, 22.h, 98.w, 13.h),
         curvePaint);
 
     /// 3 - 4
     canvas.drawPath(
         Path()
-          ..moveTo(142, 13)
+          ..moveTo(142.w, 13.h)
           ..quadraticBezierTo(147.5, 22, 155, 13),
         curvePaint);
 
     /// 4 - 5
     canvas.drawPath(
         Path()
-          ..moveTo(185, 13)
-          ..quadraticBezierTo(192.5, 22, 200, 13),
+          ..moveTo(185.w, 13.h)
+          ..quadraticBezierTo(192.5.w, 22.h, 200.w, 13.h),
         curvePaint);
 
-    canvas.drawPath(path.shift(const Offset(0, 2)), paint2);
+    canvas.drawPath(path.shift( Offset(0, 2.h)), paint2);
   }
 
   @override
