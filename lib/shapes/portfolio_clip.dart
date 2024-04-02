@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PortfolioClip extends CustomPainter {
   @override
@@ -7,36 +8,38 @@ class PortfolioClip extends CustomPainter {
     final height = size.height;
 
     final paint = Paint()
-      //..color = const Color(0xff2B2B2B)
       ..color = const Color(0xff83CCFB)
-      ..strokeWidth = 5
       ..style = PaintingStyle.fill;
 
     final path = Path()
-      ..moveTo(0, 20)
+      ..moveTo(0, 20.h)
+
       /// Top Left
-      ..arcToPoint(const Offset(20, 0), radius: const Radius.circular(20))
-      ..lineTo((width / 4) + 30, 0)
-      ..arcToPoint(Offset((width / 4) + 45, 10), radius: const Radius.circular(15))
-      ..arcToPoint(Offset((width / 4) + 60, 20), radius: const Radius.circular(15), clockwise: false)
-      ..lineTo((3 * width / 4) - 65, 20)
-      ..arcToPoint(Offset((3 * width / 4) - 45, 10), radius: const Radius.circular(20), clockwise: false)
-      ..arcToPoint(Offset((3 * width / 4) - 25, 0), radius: const Radius.circular(20))
+      ..arcToPoint(Offset(20.w, 0), radius: const Radius.circular(20).r)
+      ..lineTo((width / 4) + 30.w, 0)
+      ..arcToPoint(Offset((width / 4) + 45.w, 10.h), radius: const Radius.circular(15).r)
+      ..arcToPoint(Offset((width / 4) + 60.w, 20.h), radius: const Radius.circular(15), clockwise: false)
+      ..lineTo((3 * width / 4) - 65.w, 20.h)
+      ..arcToPoint(Offset((3 * width / 4) - 45.w, 10.h), radius: const Radius.circular(20).r, clockwise: false)
+      ..arcToPoint(Offset((3 * width / 4) - 25.w, 0), radius: const Radius.circular(20).r)
+
       /// Top Right
-      ..lineTo(width - 20, 0)
-      ..arcToPoint(Offset(width, 20), radius: const Radius.circular(20))
-      ..lineTo(width, height - 20)
-      ..arcToPoint(Offset(width - 20, height), radius: const Radius.circular(20))
+      ..lineTo(width - 20.w, 0)
+      ..arcToPoint(Offset(width, 20.h), radius: const Radius.circular(20).r)
+      ..lineTo(width, height - 20.h)
+      ..arcToPoint(Offset(width - 20.w, height), radius: const Radius.circular(20).r)
+
       /// Bottom Right
-      ..lineTo((3 * width / 4) - 10, height)
-      ..arcToPoint(Offset((3 * width / 4) - 40, height - 20), radius: const Radius.circular(35))
-      ..arcToPoint(Offset((3 * width / 4) - 70, height - 40), radius: const Radius.circular(35), clockwise: false)
-      ..lineTo((width / 4) + 70, height - 40)
-      ..arcToPoint(Offset((width / 4) + 40, height - 20), radius: const Radius.circular(35), clockwise: false)
-      ..arcToPoint(Offset((width / 4) + 10, height - 0), radius: const Radius.circular(35))
+      ..lineTo((3 * width / 4) - 10.w, height)
+      ..arcToPoint(Offset((3 * width / 4) - 40.w, height - 20.h), radius: const Radius.circular(35).r)
+      ..arcToPoint(Offset((3 * width / 4) - 70.w, height - 40.h), radius: const Radius.circular(35).r, clockwise: false)
+      ..lineTo((width / 4) + 70.w, height - 40.h)
+      ..arcToPoint(Offset((width / 4) + 40.w, height - 20.h), radius: const Radius.circular(35).r, clockwise: false)
+      ..arcToPoint(Offset((width / 4) + 10.w, height - 0), radius: const Radius.circular(35).r)
+
       /// Bottom Left
-      ..lineTo(20, height)
-      ..arcToPoint(Offset(0, height - 20), radius: const Radius.circular(20))
+      ..lineTo(20.w, height)
+      ..arcToPoint(Offset(0, height - 20.h), radius: const Radius.circular(20).r)
       ..close();
 
     canvas.drawPath(path, paint);
