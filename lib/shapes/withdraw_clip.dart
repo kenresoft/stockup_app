@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WithdrawClip extends StatelessWidget {
   const WithdrawClip({super.key});
@@ -22,14 +23,13 @@ class PathPainter extends CustomPainter {
       ..strokeWidth = 1
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.round;
-    //..pathEffect = PathEffect.dashPathEffect(<double>[2, 2], 0);
 
     Path path = Path()
       ..moveTo(0, height)
       ..lineTo(width / 3.5, height)
-      ..cubicTo((width / 3.5), height, (width / 2.8) - 15, 0, width / 2.8, 0)
+      ..cubicTo((width / 3.5), height, (width / 2.8) - 15.w, 0, width / 2.8, 0)
       ..lineTo(width - (width / 2.8), 0)
-      ..cubicTo(width - (width / 2.8) + 15, 0, width - (width / 3.5), height, width - (width / 3.5), height)
+      ..cubicTo(width - (width / 2.8) + 15.w, 0, width - (width / 3.5), height, width - (width / 3.5), height)
       ..lineTo(size.width, size.height);
 
     canvas.drawPath(path, paint);
