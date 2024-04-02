@@ -197,8 +197,8 @@ class _HomeState extends State<Home> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('STOCK IN NEWS', style: TextStyle(color: Color(0xffCFCFCF), fontSize: 18.sp)),
-                        Text('See all', style: TextStyle(color: Color(0xff898989), fontSize: 16.sp)),
+                        Text('STOCK IN NEWS', style: TextStyle(color: const Color(0xffCFCFCF), fontSize: 18.sp)),
+                        Text('See all', style: TextStyle(color: const Color(0xff898989), fontSize: 16.sp)),
                       ],
                     ),
                   ),
