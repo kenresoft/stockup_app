@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stockup_app/screens/m_pin.dart';
 
 import '../screens/funds.dart';
@@ -19,9 +20,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 30,
+      bottom: 30.h,
       width: width,
-      height: 100,
+      height: 100.h,
       child: ChainNavBar(
         currentIndex: index,
         onChange: (value) {
