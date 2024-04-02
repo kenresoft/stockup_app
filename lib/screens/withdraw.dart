@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stockup_app/widgets/custom_keyboard.dart';
 
 import '../shapes/withdraw_clip.dart';
@@ -59,16 +60,16 @@ class _WithdrawState extends State<Withdraw> {
             children: [
               Container(
                 color: const Color(0xff84CEFE),
-                height: height * .05,
+                height: 50.h,
               ),
               SizedBox(
-                height: height * .33,
+                height: 330.h,
                 child: Stack(
                   children: [
                     /// Background
                     Positioned(
                       top: 0,
-                      height: height * .26,
+                      height: 260.h,
                       width: width,
                       child: Container(color: const Color(0xff84CEFE)),
                     ),
