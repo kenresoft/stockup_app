@@ -4,12 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stockup_app/shapes/news_switch_clip.dart';
 import 'package:stockup_app/widgets/portfolio_list_tile.dart';
 
 import '../models/watchlist.dart';
 import '../shapes/dashed_line_spacer.dart';
 import '../shapes/portfolio_clip.dart';
-import '../shapes/portfolio_clip_2.dart';
+import '../shapes/portfolio_switch_clip.dart';
 import '../widgets/custom_bottom_navigation_bar.dart';
 
 class Portfolio extends StatefulWidget {
