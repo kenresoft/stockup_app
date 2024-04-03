@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stockup_app/screens/m_pin.dart';
+import 'package:stockup_app/screens/news.dart';
 
 import '../screens/funds.dart';
 import '../screens/home.dart';
@@ -44,7 +45,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
           } else if (value == 3 && index != 3) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const Funds()),
+              MaterialPageRoute(builder: (context) => const News()),
             );
           } else if (value == 4 && index != 4) {
             Navigator.push(
