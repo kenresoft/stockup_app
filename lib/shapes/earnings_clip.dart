@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InviteEarningsPainter extends CustomPainter {
   @override
@@ -8,17 +9,16 @@ class InviteEarningsPainter extends CustomPainter {
 
     final paint = Paint()
       ..color = const Color(0xff222222)
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 3;
+      ..style = PaintingStyle.fill;
     final path = Path();
 
-    path.moveTo(20, 0);
+    path.moveTo(20.w, 0);
     path.lineTo(width, 0);
     path.lineTo(width, height);
-    path.lineTo(20, height);
+    path.lineTo(20.w, height);
     path.arcToPoint(
-      const Offset(20, 0),
-      radius: const Radius.circular(20),
+      Offset(20.w, 0),
+      radius: const Radius.circular(20).r,
     );
 
     canvas.drawPath(path, paint);
