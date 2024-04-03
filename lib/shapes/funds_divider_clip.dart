@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FundsDividerClip extends CustomPainter {
   @override
@@ -16,15 +17,15 @@ class FundsDividerClip extends CustomPainter {
     final path = Path()
       ..moveTo(0, top)
       ..lineTo(width / 4, top)
-      ..lineTo((width / 4) + 40, 0)
-      ..lineTo((3 * width / 4) - 40, 0)
+      ..lineTo((width / 4) + 40.w, 0)
+      ..lineTo((3 * width / 4) - 40.w, 0)
       ..lineTo((3 * width / 4), top)
       ..lineTo(width, top);
 
     canvas.drawPath(path, paint);
   }
 
-  double get top => 20;
+  double get top => 20.h;
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
