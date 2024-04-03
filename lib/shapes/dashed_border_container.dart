@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DashedBorderContainer extends StatelessWidget {
   final double? width;
@@ -18,7 +19,7 @@ class DashedBorderContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: CustomPaint(
-        size: Size(width ?? MediaQuery.of(context).size.width, height ?? 56),
+        size: Size(width ?? MediaQuery.of(context).size.width, height ?? 56.h),
         painter: DashedBorderPainter(borderColor),
         child: SizedBox(
           width: width,
@@ -42,9 +43,9 @@ class DashedBorderPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1;
 
-    const dashWidth = 10.0;
-    const dashHeight = 10.0;
-    const dashSpace = 2; // Adjust gap as needed
+    final dashWidth = 10.0.w;
+    final dashHeight = 10.0.h;
+    final dashSpace = 2.r;
 
     // Horizontal dash for top and bottom borders
     final horizontalDash = Path();
@@ -74,16 +75,16 @@ class DashedBorderPainter extends CustomPainter {
     Path leftBorder = Path();
     leftBorder.moveTo(0, 0);
     for (double i = 0; i <= size.height; i += (dashHeight + dashSpace)) {
-      leftBorder.moveTo(-1, i);
-      leftBorder.lineTo(-1, i + dashHeight);
+      leftBorder.moveTo(-1.w, i);
+      leftBorder.lineTo(-1.w, i + dashHeight);
     }
 
     // Right border
     Path rightBorder = Path();
     rightBorder.moveTo(size.width, 0);
     for (double i = 0; i <= size.height; i += (dashHeight + dashSpace)) {
-      rightBorder.moveTo(size.width + 1, i);
-      rightBorder.lineTo(size.width + 1, i + dashHeight);
+      rightBorder.moveTo(size.width + 1.w, i);
+      rightBorder.lineTo(size.width + 1.w, i + dashHeight);
     }
 
     canvas.drawPath(topBorder, paint);
