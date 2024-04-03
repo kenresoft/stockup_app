@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DashedLineDividerPainter extends CustomPainter {
   @override
@@ -10,8 +11,8 @@ class DashedLineDividerPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.round;
 
-    const dashWidth = 3;
-    const dashSpace = 5;
+    final dashWidth = 3.w;
+    final dashSpace = 5.r;
     var currentX = 0.0;
     var currentY = 0.0;
 
