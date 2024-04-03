@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FundsClip extends CustomPainter {
   const FundsClip(this.fillColor);
@@ -50,9 +51,9 @@ class FundsClip extends CustomPainter {
     canvas.drawPath(innerPath, innerPaint);
   }
 
-  double get correction => 2.0;
+  double get correction => 2.0.w;
 
-  double get scale => 25.0;
+  double get scale => 25.0.r;
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
